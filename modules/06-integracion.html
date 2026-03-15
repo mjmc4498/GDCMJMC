@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 6: Integración de Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/module.css">
+    <link rel="icon" href="../assets/img/faveicon.png" type="image/png">
+
+<style>
+/* ─── MINIJUEGO ─── */
+.minigame-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid #0ea5e9;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2.5rem 0;
+}
+.minigame-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+.minigame-icon { font-size: 1.8rem; }
+.minigame-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    color: #0c4a6e;
+    margin: 0;
+}
+.minigame-scenario {
+    background: rgba(255,255,255,.7);
+    border-left: 4px solid #0ea5e9;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #0c4a6e;
+    font-size: .93rem;
+    line-height: 1.7;
+}
+.minigame-options {
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+}
+.minigame-option {
+    background: #fff;
+    border: 2px solid #bae6fd;
+    border-radius: .65rem;
+    padding: .85rem 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: .9rem;
+    color: #0f172a;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    transition: border-color .2s, background .2s, transform .15s;
+    line-height: 1.55;
+}
+.minigame-option:hover:not(:disabled) {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    transform: translateX(3px);
+}
+.mg-letter {
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: .8rem;
+    flex-shrink: 0;
+}
+.mg-correct { background: #dcfce7; border-color: #16a34a !important; }
+.mg-correct .mg-letter { background: #16a34a; }
+.mg-wrong { background: #fee2e2; border-color: #dc2626 !important; }
+.mg-wrong .mg-letter { background: #dc2626; }
+.mg-disabled { cursor: not-allowed; opacity: .85; }
+.minigame-feedback {
+    border-radius: .65rem;
+    padding: .9rem 1.1rem;
+    margin-top: .85rem;
+    font-size: .9rem;
+    line-height: 1.65;
+    font-weight: 500;
+}
+.mg-fb-correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.mg-fb-wrong   { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.mg-reset-btn {
+    margin-top: .75rem;
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    padding: .55rem 1.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.mg-reset-btn:hover { background: #0284c7; }
+
+/* ─── MINIJUEGO TOGGLE ─── */
+.minigame-toggle-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+.mg-chevron {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    color: #0ea5e9;
+}
+.minigame-collapsible {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+    opacity: 1;
+    }
+.minigame-box.collapsed .minigame-collapsible {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+.minigame-box.collapsed .mg-chevron {
+    transform: rotate(-90deg);
+}
+
+</style>
+
+</head>
+<body>
+<header><div class="header-container">
+    <div class="header-logo-group">
+        <img src="../assets/img/logotipo.png" alt="Logo" class="header-logo">
+        <div class="header-text"><h1>Módulo 6: Integración de Datos</h1><p>DAMA-DMBOK · Gobierno Corporativo · Ley N.° 29733</p></div>
+    </div>
+    <nav class="header-nav"><a href="../index.html" class="btn btn-outline" style="padding:.5rem 1rem;">← Dashboard</a></nav>
+</div></header>
+<main class="container"><article class="module-content animate-fade">
+<div style="display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap;">
+    <a href="../05-seguridad.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">← Módulo 5</a>
+    <span style="flex:1;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94a3b8;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Módulo 06 / 12</span>
+    <a href="../07-documentos.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">Módulo 7 →</a>
+</div>
+<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.75rem;">
+    <span class="module-badge blue">📘 DAMA-DMBOK</span>
+    <span class="module-badge gold">⚖️ Gobierno Corporativo</span>
+    <span class="module-badge red">🔒 Ley 29733</span>
+</div>
+<div class="module-section"><h2>📋 Descripción del Módulo</h2><p>La Integración de Datos comprende los procesos, tecnologías y arquitecturas que consolidan, transforman y sincronizan datos provenientes de múltiples fuentes heterogéneas para entregar información consistente y oportuna a los consumidores de datos. Es el puente que conecta los sistemas fuente con los sistemas analíticos y operacionales.</p></div>
+<div class="module-section accent-blue"><h2>📘 Relación con DAMA-DMBOK</h2><p>En el DAMA-DMBOK, la Integración e Interoperabilidad de Datos cubre los patrones ETL (Extract, Transform, Load), ELT, Change Data Capture (CDC), virtualización de datos, APIs de datos y servicios de datos. Define las actividades para diseñar, implementar y operar flujos de datos que garanticen la calidad y consistencia de la información integrada.</p></div>
+<div class="module-section accent-gold"><h2>⚖️ Relación con Gobierno Corporativo</h2><p>Desde el gobierno corporativo, la integración de datos tiene implicaciones estratégicas directas: los reportes ejecutivos, los dashboards del directorio y la inteligencia de negocio dependen de la calidad y confiabilidad de los procesos de integración. Una integración deficiente genera reportes incorrectos que conducen a decisiones de negocio basadas en información errónea.</p></div>
+<div class="module-section accent-red"><h2>🔒 Cumplimiento — Ley N.° 29733</h2><p>Cuando los flujos de integración transfieren datos personales entre sistemas, aplica plenamente la Ley 29733. El artículo 15 regula las condiciones para el flujo de datos entre entidades del mismo grupo económico. El artículo 35A regula las transferencias internacionales de datos personales, exigiendo garantías equivalentes de protección en el país receptor.</p></div>
+<div class="module-section"><h2>🎯 Objetivos de Aprendizaje</h2><ul class="module-list"><li>Diseñar e implementar pipelines de datos usando patrones ETL, ELT y CDC del marco DAMA-DMBOK.</li><li>Comparar y seleccionar entre arquitecturas de integración: batch, micro-batch y streaming.</li><li>Implementar controles de calidad de datos en los procesos de integración.</li><li>Diseñar arquitecturas de integración resilientes con manejo de errores y reintentos.</li><li>Cumplir la Ley 29733 en flujos de datos personales entre sistemas y con el exterior.</li></ul></div>
+<div class="module-section"><h2>🔑 Conceptos Clave</h2><ul class="module-list"><li><strong>ETL (Extract, Transform, Load):</strong> Proceso de extracción de datos de fuentes, transformación según reglas de negocio y carga en destino.</li><li><strong>ELT (Extract, Load, Transform):</strong> Variante moderna donde los datos se cargan primero en el destino y se transforman allí, aprovechando el poder de cómputo del data warehouse.</li><li><strong>CDC (Change Data Capture):</strong> Técnica que captura solo los cambios incrementales en las fuentes para una integración eficiente y casi en tiempo real.</li><li><strong>Data Virtualization:</strong> Capa de abstracción que presenta datos de múltiples fuentes sin moverlos físicamente.</li><li><strong>API de Datos:</strong> Interfaz programática que expone datos de forma segura y estandarizada para consumo interno y externo.</li></ul></div>
+<div class="module-section"><h2>⚙️ Explicación Técnica Detallada</h2><p>Los patrones de integración en el DAMA-DMBOK se clasifican por latencia y complejidad: (1) Batch — integración programada por lotes, ideal para grandes volúmenes con baja necesidad de actualización; (2) Micro-batch — integración frecuente en pequeños lotes (Apache Spark Structured Streaming); (3) Streaming — integración en tiempo real evento a evento (Apache Kafka, AWS Kinesis); (4) Virtualización — acceso federado sin mover datos. La arquitectura Medallion (Bronze → Silver → Gold) organiza las capas de transformación en Data Lakehouses, asegurando trazabilidad y calidad progresiva.</p></div>
+<div class="module-section accent-blue"><h2>🏢 Ejemplos en Organizaciones</h2><p>La empresa de transporte aéreo LATAM Airlines implementó un pipeline de integración en tiempo real con Apache Kafka para sincronizar datos de reservas entre 9 sistemas (GDS, check-in, equipaje, catering) en 14 países. El tiempo de sincronización pasó de 30 minutos a 3 segundos, eliminando inconsistencias que generaban reclamos de pasajeros y multas regulatorias.</p></div>
+<div class="module-section"><h2>✅ Buenas Prácticas Internacionales</h2><ul class="module-list"><li>Implementar idempotencia en todos los pipelines de integración para garantizar resultados consistentes ante reejecutciones.</li><li>Diseñar siempre un mecanismo de gestión de errores con alertas y registro de trazabilidad.</li><li>Usar CDC en lugar de full-load para integraciones frecuentes, reduciendo carga en sistemas fuente.</li><li>Documentar el lineaje de datos de cada pipeline para auditoría y diagnóstico.</li><li>Cifrar los datos en tránsito con TLS 1.3 en todos los flujos que incluyan datos personales.</li></ul></div>
+<div class="module-section accent-red"><h2>⚠️ Errores Comunes</h2><ul class="module-list"><li>Diseñar pipelines de integración sin gestión de errores, generando pérdida silenciosa de datos.</li><li>No documentar las transformaciones aplicadas, dificultando el diagnóstico de problemas.</li><li>Integrar datos personales entre sistemas sin verificar el cumplimiento de la Ley 29733.</li><li>Usar consultas SQL directas a bases de datos de producción para integración, generando carga no planificada.</li><li>No implementar monitoreo de latencia y calidad en los pipelines, detectando problemas solo cuando usuarios se quejan.</li></ul></div>
+<div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Rímac Seguros en Perú integró datos de 5 sistemas core (pólizas, siniestros, clientes, pagos, agentes) usando MuleSoft, implementando una capa de API Management que redujo el tiempo de desarrollo de nuevas integraciones de 3 meses a 2 semanas. El catálogo de APIs incluye controles de throttling y auditoría de acceso para cumplir con la Ley 29733.</p></div>
+<div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Apache Kafka:</strong> Plataforma de streaming distribuido para integración en tiempo real de alta disponibilidad.</li><li><strong>Apache Airflow:</strong> Orquestador de pipelines de datos batch y micro-batch con interfaz visual de monitoreo.</li><li><strong>dbt (data build tool):</strong> Herramienta de transformación y documentación de modelos en el patrón ELT moderno.</li><li><strong>MuleSoft / Azure Integration Services:</strong> Plataformas de integración empresarial con gestión de APIs y conectores listos para usar.</li><li><strong>AWS Glue / Azure Data Factory:</strong> Servicios de integración de datos en la nube con catálogo de datos integrado.</li></ul></div>
+<div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Diseña el pipeline de integración para una cadena de supermercados peruana que requiere consolidar ventas de 80 tiendas (Oracle POS) en su Data Warehouse (Snowflake) para reportes de categorías al día siguiente a las 6 AM. Especifica: (a) Diagrama de la arquitectura del pipeline (fuentes → staging → transformación → destino); (b) Estrategia de integración: batch, CDC o streaming (justifica); (c) Reglas de transformación para estandarizar códigos de producto y sucursal; (d) Plan de gestión de errores y alertas; (e) Controles para datos de clientes con tarjeta de fidelización (Ley 29733).</p></div>
+<div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list"><li>Diseñar los pipelines con el patrón Medallion (Bronze/Silver/Gold) para garantizar calidad progresiva.</li><li>Implementar un catálogo de APIs de datos para estandarizar el consumo y agregar control de acceso.</li><li>Adoptar herramientas de orquestación (Airflow, Prefect) desde el inicio para gestionar dependencias.</li><li>Incluir métricas de calidad de datos (completitud, exactitud, oportunidad) en los pipelines.</li><li>Documentar cada pipeline con su propósito, fuentes, transformaciones y SLA de actualización.</li></ul></div>
+<div class="module-section" style="background:#f0fdf4;border-left:4px solid #10b981;"><h2>📌 Resumen del Módulo</h2><p>La Integración de Datos es el tejido conectivo del ecosistema de información empresarial. El DAMA-DMBOK la define como un dominio crítico que requiere tanto rigor técnico (arquitecturas resilientes, CDC, streaming) como gobierno (lineaje, calidad, cumplimiento). En el contexto peruano, todo flujo de datos personales debe ser evaluado bajo la Ley 29733, especialmente las transferencias entre sistemas y con terceros o el extranjero.</p></div>
+
+            <!-- ═══ MINIJUEGO INTERACTIVO ═══ -->
+            <div class="minigame-box" id="minigame-section">
+                <div class="minigame-header" style="margin-bottom:0;">
+                    <button class="minigame-toggle-btn" onclick="toggleMinigame(this)">
+                        <div style="display:flex; align-items:center; gap:.75rem;">
+                            <span class="minigame-icon">🎮</span>
+                            <h3>Ingeniero de Integración — Elige el Patrón Correcto</h3>
+                        </div>
+                        <span class="mg-chevron">▼</span>
+                    </button>
+                </div>
+                <div class="minigame-collapsible">
+                    <div style="padding-top: 1.25rem;">
+                        <div class="minigame-scenario">
+                            <strong>📋 Situación:</strong> Una empresa de delivery tiene 80,000 pedidos diarios. Necesita actualizar el stock del inventario INMEDIATAMENTE cuando se confirma cada pedido (sin demoras), y sincronizar los datos al Data Warehouse una vez al día a las 2 AM para reportes gerenciales.
+                        </div>
+                        <p style="font-weight:600; color:#0f172a; margin-bottom:.75rem;">¿Cuál es la decisión correcta?</p>
+                        <div class="minigame-options" id="mg-opts-6">
+                            
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ Un batch nocturno no cumple el requisito de actualización inmediata del inventario. Si un producto llega a 0 unidades a las 10 AM, seguirá vendiéndose hasta las 2 AM del día siguiente.`)">
+                <span class="mg-letter">A</span>
+                <span>ETL batch a las 2 AM para todo: tanto el inventario como el Data Warehouse.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, true, `✅ ¡Arquitectura correcta! Cada patrón para su caso de uso: streaming (Apache Kafka) para operaciones en tiempo real, batch (Airflow + dbt) para análisis histórico.`)">
+                <span class="mg-letter">B</span>
+                <span>Arquitectura híbrida: Streaming/CDC en tiempo real para el inventario operacional + ETL batch nocturno para el Data Warehouse analítico.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ Las consultas analíticas complejas degradarían el rendimiento del sistema transaccional. La separación OLTP/OLAP es un principio fundamental de arquitectura de datos.`)">
+                <span class="mg-letter">C</span>
+                <span>Eliminar el Data Warehouse y hacer todos los análisis directamente sobre la base de datos de producción.</span>
+            </button>
+                        </div>
+                        <div class="minigame-feedback" id="mg-feedback-6" style="display:none;"></div>
+                        <button class="mg-reset-btn" id="mg-reset-6" style="display:none;" onclick="resetMG(6)">↩ Intentar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+            function toggleMinigame(btn) {
+                const box = btn.closest('.minigame-box');
+                box.classList.toggle('collapsed');
+            }
+            function answerMG(btn, isCorrect, feedback) {
+                const allBtns = btn.closest('.minigame-options').querySelectorAll('button');
+                allBtns.forEach(b => { b.disabled = true; b.classList.add('mg-disabled'); });
+                const fb = document.getElementById('mg-feedback-6');
+                const reset = document.getElementById('mg-reset-6');
+                if (isCorrect) {
+                    btn.classList.add('mg-correct');
+                    fb.className = 'minigame-feedback mg-fb-correct';
+                } else {
+                    btn.classList.add('mg-wrong');
+                    fb.className = 'minigame-feedback mg-fb-wrong';
+                }
+                fb.textContent = feedback;
+                fb.style.display = 'block';
+                reset.style.display = 'inline-flex';
+            }
+            function resetMG(n) {
+                const allBtns = document.querySelectorAll('#mg-opts-' + n + ' button');
+                allBtns.forEach(b => { b.disabled = false; b.classList.remove('mg-disabled','mg-correct','mg-wrong'); });
+                const fb = document.getElementById('mg-feedback-' + n);
+                fb.style.display = 'none';
+                document.getElementById('mg-reset-' + n).style.display = 'none';
+            }
+            </script>
+
+        </article></main>
+    <script src="../js/quiz-data.js"></script>
+<script src="../js/quiz.js"></script>
+</body></html>

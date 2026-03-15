@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Gobierno de Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/module.css">
+    <link rel="icon" href="../assets/img/faveicon.png" type="image/png">
+
+<style>
+/* ─── MINIJUEGO ─── */
+.minigame-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid #0ea5e9;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2.5rem 0;
+}
+.minigame-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+.minigame-icon { font-size: 1.8rem; }
+.minigame-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    color: #0c4a6e;
+    margin: 0;
+}
+.minigame-scenario {
+    background: rgba(255,255,255,.7);
+    border-left: 4px solid #0ea5e9;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #0c4a6e;
+    font-size: .93rem;
+    line-height: 1.7;
+}
+.minigame-options {
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+}
+.minigame-option {
+    background: #fff;
+    border: 2px solid #bae6fd;
+    border-radius: .65rem;
+    padding: .85rem 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: .9rem;
+    color: #0f172a;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    transition: border-color .2s, background .2s, transform .15s;
+    line-height: 1.55;
+}
+.minigame-option:hover:not(:disabled) {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    transform: translateX(3px);
+}
+.mg-letter {
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: .8rem;
+    flex-shrink: 0;
+}
+.mg-correct { background: #dcfce7; border-color: #16a34a !important; }
+.mg-correct .mg-letter { background: #16a34a; }
+.mg-wrong { background: #fee2e2; border-color: #dc2626 !important; }
+.mg-wrong .mg-letter { background: #dc2626; }
+.mg-disabled { cursor: not-allowed; opacity: .85; }
+.minigame-feedback {
+    border-radius: .65rem;
+    padding: .9rem 1.1rem;
+    margin-top: .85rem;
+    font-size: .9rem;
+    line-height: 1.65;
+    font-weight: 500;
+}
+.mg-fb-correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.mg-fb-wrong   { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.mg-reset-btn {
+    margin-top: .75rem;
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    padding: .55rem 1.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.mg-reset-btn:hover { background: #0284c7; }
+
+/* ─── MINIJUEGO TOGGLE ─── */
+.minigame-toggle-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+.mg-chevron {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    color: #0ea5e9;
+}
+.minigame-collapsible {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+    opacity: 1;
+    }
+.minigame-box.collapsed .minigame-collapsible {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+.minigame-box.collapsed .mg-chevron {
+    transform: rotate(-90deg);
+}
+
+</style>
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-logo-group">
+                <img src="../assets/img/logotipo.png" alt="Logo" class="header-logo">
+                <div class="header-text">
+                    <h1>Módulo 1: Gobierno de Datos</h1>
+                    <p>Dominio de Conocimiento — DAMA-DMBOK · Gobierno Corporativo · Ley 29733</p>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="../index.html" class="btn btn-outline" style="padding:.5rem 1rem;">← Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="module-content animate-fade">
+
+            <!-- NAV PILLS -->
+            <div style="display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap;">
+                <a href="../index.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">← Dashboard</a>
+                <span style="flex:1;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94a3b8;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Módulo 01 / 12</span>
+                <a href="../02-arquitectura.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">Módulo 2 →</a>
+            </div>
+
+            <!-- BADGE ROW -->
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.75rem;">
+                <span class="module-badge blue">📘 DAMA-DMBOK</span>
+                <span class="module-badge gold">⚖️ Gobierno Corporativo</span>
+                <span class="module-badge red">🔒 Ley 29733</span>
+            </div>
+
+            <!-- 1. DESCRIPCIÓN -->
+            <div class="module-section">
+                <h2>📋 Descripción del Módulo</h2>
+                <p>El Gobierno de Datos es el conjunto de políticas, procesos, roles y estándares que aseguran el uso estratégico, seguro y confiable de los datos en la organización. Según el DAMA-DMBOK, es el dominio central del que dependen todos los demás dominios de gestión de datos.</p>
+            </div>
+
+            <!-- 2. DAMA -->
+            <div class="module-section accent-blue">
+                <h2>📘 Relación con DAMA-DMBOK</h2>
+                <p>En el marco DAMA-DMBOK (2a edición), el Gobierno de Datos ocupa el centro de la "Rueda de DAMA". Define la autoridad, los controles y la toma de decisiones sobre los datos. Sin Gobierno de Datos, los demás 10 dominios carecen de dirección, norma y responsabilidad.</p>
+            </div>
+
+            <!-- 3. GOBIERNO CORPORATIVO -->
+            <div class="module-section accent-gold">
+                <h2>⚖️ Relación con Gobierno Corporativo</h2>
+                <p>El gobierno corporativo moderno reconoce los datos como activos estratégicos de la organización. El directorio y la alta dirección son responsables de asegurar que existan mecanismos de control, transparencia y rendición de cuentas sobre cómo se gestionan los datos, alineados a los objetivos de negocio.</p>
+            </div>
+
+            <!-- 4. LEY 29733 -->
+            <div class="module-section accent-red">
+                <h2>🔒 Cumplimiento — Ley N.° 29733 (Perú)</h2>
+                <p>La Ley N.° 29733 y su Reglamento (DS 003-2013-JUS) exigen a las organizaciones designar un responsable del banco de datos personales. El Gobierno de Datos provee el marco para nombrar Data Owners y Stewards que asuman esta responsabilidad legal, y para implementar políticas de protección y uso lícito de datos personales.</p>
+            </div>
+
+            <!-- 5. OBJETIVOS -->
+            <div class="module-section">
+                <h2>🎯 Objetivos de Aprendizaje</h2>
+                <ul class="module-list"><li>Comprender el rol central del Gobierno de Datos en el marco DAMA-DMBOK.</li><li>Identificar los roles clave: CDO, Data Owner, Data Steward, Data Custodian.</li><li>Diseñar un modelo operativo de Gobierno de Datos para una organización.</li><li>Relacionar el Gobierno de Datos con el cumplimiento de la Ley 29733.</li><li>Establecer métricas de gobierno (KGI) y su impacto estratégico.</li></ul>
+            </div>
+
+            <!-- 6. CONCEPTOS CLAVE -->
+            <div class="module-section">
+                <h2>🔑 Conceptos Clave</h2>
+                <ul class="module-list"><li><strong>Gobierno de Datos:</strong> Ejercicio de autoridad y control sobre la gestión de datos; define quién puede tomar qué decisiones con cuáles datos y bajo qué circunstancias.</li><li><strong>Data Owner:</strong> Líder de negocio con autoridad formal sobre un dominio de datos: aprueba definiciones, accesos y políticas.</li><li><strong>Data Steward:</strong> Responsable operativo de la calidad, integridad y documentación cotidiana de los datos en su ámbito.</li><li><strong>Consejo de Datos:</strong> Órgano de gobierno compuesto por Data Owners y líderes de negocio que toma decisiones estratégicas sobre datos.</li><li><strong>KGI (Key Governance Indicators):</strong> Métricas que miden la efectividad del programa de Gobierno de Datos: cobertura de políticas, incidentes de calidad, tiempo de resolución.</li></ul>
+            </div>
+
+            <!-- 7. EXPLICACIÓN TÉCNICA -->
+            <div class="module-section">
+                <h2>⚙️ Explicación Técnica Detallada</h2>
+                <p>El Gobierno de Datos opera mediante tres pilares: (1) Personas y Organización — definición de roles y responsabilidades formales; (2) Procesos — políticas, procedimientos y flujos de escalamiento; (3) Tecnología — herramientas de catálogo de datos, lineaje y control de acceso. El Consejo de Datos define las reglas; los Data Stewards las ejecutan; y los Data Custodians (TI) aseguran la infraestructura. El ciclo de gobierno incluye: Definir política → Comunicar → Implementar → Monitorear → Mejorar.</p>
+            </div>
+
+            <!-- 8. EJEMPLOS -->
+            <div class="module-section accent-blue">
+                <h2>🏢 Ejemplos Aplicados a Organizaciones</h2>
+                <p>Un banco retail peruano implementó un Consejo de Datos con representantes de Operaciones, Marketing, Riesgos y TI. Se designaron Data Owners para "Cliente", "Producto" y "Transacción". En 12 meses redujeron los incidentes de calidad de datos en un 60% y cumplieron auditorías de la SBS sin observaciones sobre gestión de información.</p>
+            </div>
+
+            <!-- 9. BUENAS PRÁCTICAS -->
+            <div class="module-section">
+                <h2>✅ Buenas Prácticas Internacionales</h2>
+                <ul class="module-list"><li>Comenzar con un diagnóstico de madurez (DCAM o CMMI-DM) antes de diseñar el modelo.</li><li>Involucrar al negocio desde el inicio: el Gobierno de Datos no es un proyecto de TI.</li><li>Publicar y comunicar un Glosario de Negocio (Business Glossary) como primera entrega de valor visible.</li><li>Definir métricas de éxito (KGI) desde el arranque del programa.</li><li>Priorizar los dominios de datos críticos (MDEs) en lugar de intentar gobernar todo simultáneamente.</li></ul>
+            </div>
+
+            <!-- 10. ERRORES COMUNES -->
+            <div class="module-section accent-red">
+                <h2>⚠️ Errores Comunes en las Organizaciones</h2>
+                <ul class="module-list"><li>Creer que el Gobierno de Datos es iniciativa de TI cuando debe ser liderado por el negocio.</li><li>Crear comités sin autoridad real ni respaldo de la alta dirección.</li><li>Intentar gobernar todos los datos al mismo tiempo sin priorización.</li><li>No comunicar los beneficios del programa a los usuarios finales.</li><li>Ignorar el cumplimiento normativo (Ley 29733) como parte del marco de gobierno.</li></ul>
+            </div>
+
+            <!-- 11. CASOS DE USO -->
+            <div class="module-section accent-gold">
+                <h2>💼 Casos de Uso Reales</h2>
+                <p>El Banco de Crédito del Perú (BCP) implementó un programa formal de Gobierno de Datos para cumplir regulaciones de la SBS y mejorar la calidad de reportes regulatorios. En Colombia, Bancolombia estableció un Consejo de Datos con 14 Data Owners que redujo el tiempo de provisión de datos analíticos de semanas a días.</p>
+            </div>
+
+            <!-- 12. HERRAMIENTAS -->
+            <div class="module-section">
+                <h2>🛠️ Herramientas y Tecnologías</h2>
+                <ul class="module-list"><li><strong>Collibra:</strong> Plataforma enterprise de gobierno, catálogo y lineaje de datos.</li><li><strong>Informatica Axon:</strong> Gestión de políticas y roles de gobierno con integración a MDM.</li><li><strong>Microsoft Purview:</strong> Catálogo de datos, clasificación y gobierno integrado en el ecosistema Azure.</li><li><strong>Apache Atlas:</strong> Solución open-source de catálogo y lineaje para entornos Hadoop/cloud.</li><li><strong>Excel / Confluence:</strong> Para organizaciones pequeñas: documentación de políticas y glosarios de negocio.</li></ul>
+            </div>
+
+            <!-- 13. EJERCICIO -->
+            <div class="module-section accent-blue" style="border-left-color:#06b6d4;">
+                <h2>✏️ Ejercicio Práctico</h2>
+                <p>Actividad: Elabora una Carta de Constitución del Programa de Gobierno de Datos para una empresa peruana de telecomunicaciones. Debe incluir: (a) Visión y alcance del programa; (b) Organigrama del Consejo de Datos con roles y responsables; (c) Los 5 dominios de datos prioritarios a gobernar; (d) 3 políticas de datos fundamentales; (e) 5 KGIs con sus líneas base y metas a 12 meses. Entrega un documento de 2 páginas con tabla de roles y mapa de dominios.</p>
+            </div>
+
+            <!-- 14. RECOMENDACIONES -->
+            <div class="module-section">
+                <h2>💡 Recomendaciones de Implementación</h2>
+                <ul class="module-list"><li>Obtener sponsorship ejecutivo (CDO o Gerente General) antes de lanzar el programa.</li><li>Implementar el gobierno de forma incremental: primer trimestre = glosario y roles; segundo = políticas; tercero = métricas.</li><li>Establecer un repositorio centralizado (catálogo de datos) como herramienta operativa del Consejo.</li><li>Vincular el Gobierno de Datos al cumplimiento de la Ley 29733 para darle urgencia regulatoria.</li><li>Celebrar y comunicar victorias tempranas para mantener el momentum del programa.</li></ul>
+            </div>
+
+            <!-- 15. RESUMEN -->
+            <div class="module-section" style="background:#f0fdf4;border-left:4px solid #10b981;">
+                <h2>📌 Resumen del Módulo</h2>
+                <p>El Gobierno de Datos, como centro de la Rueda DAMA-DMBOK, provee la autoridad, control y orientación necesarios para que todos los demás dominios de gestión de datos operen con coherencia. En el contexto peruano, su implementación no solo es una buena práctica estratégica sino también un requisito normativo bajo la Ley 29733. Un programa sólido de Gobierno de Datos transforma los datos en activos corporativos estratégicos y reduce riesgos operativos, regulatorios y reputacionales.</p>
+            </div>
+
+        
+            <!-- ═══ MINIJUEGO INTERACTIVO ═══ -->
+            <div class="minigame-box" id="minigame-section">
+                <div class="minigame-header" style="margin-bottom:0;">
+                    <button class="minigame-toggle-btn" onclick="toggleMinigame(this)">
+                        <div style="display:flex; align-items:center; gap:.75rem;">
+                            <span class="minigame-icon">🎮</span>
+                            <h3>Simulador del CDO — ¿Qué decides?</h3>
+                        </div>
+                        <span class="mg-chevron">▼</span>
+                    </button>
+                </div>
+                <div class="minigame-collapsible">
+                    <div style="padding-top: 1.25rem;">
+                        <div class="minigame-scenario">
+                            <strong>📋 Situación:</strong> Eres el nuevo CDO del Banco Andino. El área de Marketing quiere cruzar datos de clientes con una base comprada en internet para enviar SMS masivos sin consentimiento previo.
+                        </div>
+                        <p style="font-weight:600; color:#0f172a; margin-bottom:.75rem;">¿Cuál es la decisión correcta?</p>
+                        <div class="minigame-options" id="mg-opts-1">
+                            
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ Esto viola la Ley 29733 (falta de consentimiento). El banco podría ser multado hasta 100 UIT por la ANPDP.`)">
+                <span class="mg-letter">A</span>
+                <span>Aprobar: Marketing necesita vender más tarjetas de crédito.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, true, `✅ ¡Correcto! Un CDO protege a la organización asegurando el uso legal de los datos. El consentimiento expreso es obligatorio.`)">
+                <span class="mg-letter">B</span>
+                <span>Bloquear hasta que Legal verifique el consentimiento bajo Ley 29733.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ El problema no es técnico, es de cumplimiento legal y gobernanza. La infraestructura adicional no resuelve el riesgo regulatorio.`)">
+                <span class="mg-letter">C</span>
+                <span>Pedir a TI un servidor más grande para alojar esa base de datos.</span>
+            </button>
+                        </div>
+                        <div class="minigame-feedback" id="mg-feedback-1" style="display:none;"></div>
+                        <button class="mg-reset-btn" id="mg-reset-1" style="display:none;" onclick="resetMG(1)">↩ Intentar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+            function toggleMinigame(btn) {
+                const box = btn.closest('.minigame-box');
+                box.classList.toggle('collapsed');
+            }
+            function answerMG(btn, isCorrect, feedback) {
+                const allBtns = btn.closest('.minigame-options').querySelectorAll('button');
+                allBtns.forEach(b => { b.disabled = true; b.classList.add('mg-disabled'); });
+                const fb = document.getElementById('mg-feedback-1');
+                const reset = document.getElementById('mg-reset-1');
+                if (isCorrect) {
+                    btn.classList.add('mg-correct');
+                    fb.className = 'minigame-feedback mg-fb-correct';
+                } else {
+                    btn.classList.add('mg-wrong');
+                    fb.className = 'minigame-feedback mg-fb-wrong';
+                }
+                fb.textContent = feedback;
+                fb.style.display = 'block';
+                reset.style.display = 'inline-flex';
+            }
+            function resetMG(n) {
+                const allBtns = document.querySelectorAll('#mg-opts-' + n + ' button');
+                allBtns.forEach(b => { b.disabled = false; b.classList.remove('mg-disabled','mg-correct','mg-wrong'); });
+                const fb = document.getElementById('mg-feedback-' + n);
+                fb.style.display = 'none';
+                document.getElementById('mg-reset-' + n).style.display = 'none';
+            }
+            </script>
+
+        </article>
+    </main>
+    <script src="../js/quiz-data.js"></script>
+    <script src="../js/quiz.js"></script>
+</body>
+</html>

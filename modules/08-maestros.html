@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 8: Datos Maestros y de Referencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/module.css">
+    <link rel="icon" href="../assets/img/faveicon.png" type="image/png">
+
+<style>
+/* ─── MINIJUEGO ─── */
+.minigame-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid #0ea5e9;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2.5rem 0;
+}
+.minigame-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+.minigame-icon { font-size: 1.8rem; }
+.minigame-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    color: #0c4a6e;
+    margin: 0;
+}
+.minigame-scenario {
+    background: rgba(255,255,255,.7);
+    border-left: 4px solid #0ea5e9;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #0c4a6e;
+    font-size: .93rem;
+    line-height: 1.7;
+}
+.minigame-options {
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+}
+.minigame-option {
+    background: #fff;
+    border: 2px solid #bae6fd;
+    border-radius: .65rem;
+    padding: .85rem 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: .9rem;
+    color: #0f172a;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    transition: border-color .2s, background .2s, transform .15s;
+    line-height: 1.55;
+}
+.minigame-option:hover:not(:disabled) {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    transform: translateX(3px);
+}
+.mg-letter {
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: .8rem;
+    flex-shrink: 0;
+}
+.mg-correct { background: #dcfce7; border-color: #16a34a !important; }
+.mg-correct .mg-letter { background: #16a34a; }
+.mg-wrong { background: #fee2e2; border-color: #dc2626 !important; }
+.mg-wrong .mg-letter { background: #dc2626; }
+.mg-disabled { cursor: not-allowed; opacity: .85; }
+.minigame-feedback {
+    border-radius: .65rem;
+    padding: .9rem 1.1rem;
+    margin-top: .85rem;
+    font-size: .9rem;
+    line-height: 1.65;
+    font-weight: 500;
+}
+.mg-fb-correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.mg-fb-wrong   { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.mg-reset-btn {
+    margin-top: .75rem;
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    padding: .55rem 1.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.mg-reset-btn:hover { background: #0284c7; }
+
+/* ─── MINIJUEGO TOGGLE ─── */
+.minigame-toggle-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+.mg-chevron {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    color: #0ea5e9;
+}
+.minigame-collapsible {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+    opacity: 1;
+    }
+.minigame-box.collapsed .minigame-collapsible {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+.minigame-box.collapsed .mg-chevron {
+    transform: rotate(-90deg);
+}
+
+</style>
+
+</head><body>
+<header><div class="header-container">
+    <div class="header-logo-group">
+        <img src="../assets/img/logotipo.png" alt="Logo" class="header-logo">
+        <div class="header-text"><h1>Módulo 8: Datos Maestros y de Referencia</h1><p>DAMA-DMBOK · Gobierno Corporativo · Ley N.° 29733</p></div>
+    </div>
+    <nav class="header-nav"><a href="../index.html" class="btn btn-outline" style="padding:.5rem 1rem;">← Dashboard</a></nav>
+</div></header>
+<main class="container"><article class="module-content animate-fade">
+<div style="display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap;">
+    <a href="../07-documentos.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">← Módulo 7</a>
+    <span style="flex:1;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94a3b8;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Módulo 08 / 12</span>
+    <a href="../09-dwbi.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">Módulo 9 →</a>
+</div>
+<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.75rem;">
+    <span class="module-badge blue">📘 DAMA-DMBOK</span>
+    <span class="module-badge gold">⚖️ Gobierno Corporativo</span>
+    <span class="module-badge red">🔒 Ley 29733</span>
+</div>
+<div class="module-section"><h2>📋 Descripción del Módulo</h2><p>La Gestión de Datos Maestros (MDM - Master Data Management) y Datos de Referencia (RDM - Reference Data Management) asegura que las entidades críticas del negocio (Clientes, Productos, Proveedores, Empleados) y los catálogos compartidos (países, monedas, códigos) tengan una versión única, confiable y consistente en toda la organización.</p></div>
+<div class="module-section accent-blue"><h2>📘 Relación con DAMA-DMBOK</h2><p>En el DAMA-DMBOK, MDM y RDM son dominios específicos que abordan el problema de la "versión única de la verdad" (Single Version of Truth). El MDM define los procesos de identificación, consolidación, enriquecimiento y distribución de entidades maestras. El RDM gestiona catálogos y tablas de código que son referenciados por múltiples sistemas.</p></div>
+<div class="module-section accent-gold"><h2>⚖️ Relación con Gobierno Corporativo</h2><p>Desde el gobierno corporativo, los datos maestros defectuosos generan pérdidas económicas directas: duplicados de clientes implican doble facturación o campañas desaprovechadas; productos mal codificados generan errores en inventario y finanzas. El gobierno corporativo exige que exista un Data Owner formal para cada entidad maestra con autoridad para resolver conflictos de datos.</p></div>
+<div class="module-section accent-red"><h2>🔒 Cumplimiento — Ley N.° 29733</h2><p>La Ley 29733 tiene implicaciones directas en MDM: la entidad de datos "Cliente" es por definición un banco de datos personales. La consolidación de registros de clientes desde múltiples sistemas para crear un "Golden Record" debe garantizar que los datos personales combinados tengan base legal (consentimiento, contrato o interés legítimo) y que no se usen para finalidades distintas a las declaradas en el banco de datos personales ante la ANPDP.</p></div>
+<div class="module-section"><h2>🎯 Objetivos de Aprendizaje</h2><ul class="module-list"><li>Comprender los patrones de implementación MDM: Registry, Coexistence, Centralized, Hybrid.</li><li>Diseñar el proceso de identificación, deduplicación y consolidación en un "Golden Record".</li><li>Implementar la gestión de datos de referencia con versionado y flujos de aprobación.</li><li>Definir los Data Owners y Stewards para las entidades maestras principales.</li><li>Cumplir la Ley 29733 en la consolidación de datos personales en un registro maestro de clientes.</li></ul></div>
+<div class="module-section"><h2>🔑 Conceptos Clave</h2><ul class="module-list"><li><strong>Golden Record:</strong> La versión más completa, confiable y actualizada de un registro maestro, resultado de consolidar múltiples fuentes.</li><li><strong>Deduplicación:</strong> Proceso de identificar y fusionar registros duplicados de la misma entidad real usando algoritmos de coincidencia.</li><li><strong>Survivorship Rules:</strong> Reglas que definen qué valor de qué sistema fuente "gana" para cada atributo en el Golden Record.</li><li><strong>MDM Hub:</strong> Sistema centralizado que actúa como repositorio de las entidades maestras y su distribución a sistemas.</li><li><strong>Datos de Referencia:</strong> Catálogos compartidos de valores estandarizados: códigos de país ISO, tipos de moneda, categorías de producto.</li></ul></div>
+<div class="module-section"><h2>⚙️ Explicación Técnica Detallada</h2><p>Las implementaciones de MDM siguen cuatro patrones arquitectónicos del DAMA-DMBOK: (1) Registry (Registro) — el MDM Hub solo almacena referencias a los sistemas fuente, sin mover datos; (2) Consolidation — los datos se consolidan en el hub solo para análisis, los sistemas fuente permanecen como sistemas de registro; (3) Coexistence — el hub es el sistema de registro maestro pero coexiste con datos en sistemas fuente; (4) Centralized — el hub es el único sistema de registro para la entidad maestra. La elección del patrón depende del nivel de complejidad organizacional, la calidad de los datos existentes y el apetito de cambio.</p></div>
+<div class="module-section accent-blue"><h2>🏢 Ejemplos en Organizaciones</h2><p>El Grupo Intercorp en Perú (InRetail, Interbank, La Vitalicia, Real Plaza) implementó un MDM de clientes para su programa de fidelización "Mi Bono", consolidando datos de 8 millones de clientes de 12 sistemas diferentes. El Golden Record de cliente permitió calcular el valor de vida del cliente (CLV) a nivel de grupo y ofrecer beneficios personalizados, incrementando las ventas cruzadas en un 23%.</p></div>
+<div class="module-section"><h2>✅ Buenas Prácticas Internacionales</h2><ul class="module-list"><li>Comenzar por la entidad maestra más crítica para el negocio (usualmente "Cliente" o "Producto"), no intentar hacer todo a la vez.</li><li>Definir reglas de supervivencia (Survivorship Rules) formalmente y aprobarlas con los Data Owners.</li><li>Implementar procesos de detección y resolución de duplicados como operación continua, no solo como carga inicial.</li><li>Publicar el catálogo de datos de referencia con versionado y proceso de aprobación de cambios.</li><li>Establecer métricas de calidad para los registros maestros: % duplicados, % completitud, % exactitud.</li></ul></div>
+<div class="module-section accent-red"><h2>⚠️ Errores Comunes</h2><ul class="module-list"><li>Implementar MDM sin un Data Owner formal que tenga autoridad para resolver conflictos de datos.</li><li>Definir reglas de supervivencia arbitrarias sin análisis de calidad de cada sistema fuente.</li><li>Ignorar los registros de referencia (tablas de código), que son generadores ocultos de inconsistencia.</li><li>Consolidar datos personales de clientes sin base legal ni actualización del banco de datos ante la ANPDP.</li><li>No establecer un proceso de gobierno de cambios en los datos maestros, permitiendo modificaciones no controladas.</li></ul></div>
+<div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Procter & Gamble implementó MDM para 100,000 productos en 180 países, reduciendo los errores de inventario en un 82% y ahorrando 300 millones de dólares anuales en ineficiencias de la cadena de suministro. En el sector salud peruano, EsSalud trabaja en la consolidación del padrón de asegurados (datos maestros de personas) para eliminar duplicados que generaban pagos de pensiones a fallecidos.</p></div>
+<div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Informatica MDM:</strong> Plataforma líder de Master Data Management con capacidades de deduplicación y gobierno.</li><li><strong>SAP Master Data Governance (MDG):</strong> MDM integrado en el ecosistema SAP para clientes, materiales y proveedores.</li><li><strong>Reltio Cloud:</strong> MDM moderno basado en grafos de conocimiento para resolución de entidades en tiempo real.</li><li><strong>TIBCO EBX:</strong> Gestión de datos maestros y de referencia con flujos de aprobación y versionado.</li><li><strong>Talend MDM:</strong> Solución open-core de MDM con integración a pipelines de datos.</li></ul></div>
+<div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Una empresa de telecomunicaciones peruana tiene el registro de "Cliente" duplicado en 5 sistemas: CRM (Salesforce), Facturación (SAP), Atención al Cliente (Zendesk), Red (OSS) y Analytics (Redshift). Diseña la estrategia MDM: (a) Elección y justificación del patrón MDM (Registry/Consolidation/Coexistence/Centralized); (b) Proceso de deduplicación con 4 atributos de coincidencia (DNI, teléfono, email, nombre); (c) 5 Survivorship Rules para los atributos más críticos; (d) Flujo de distribución del Golden Record a los 5 sistemas; (e) Análisis de cumplimiento con Ley 29733 para la consolidación de datos personales.</p></div>
+<div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list"><li>Obtener patrocinio ejecutivo: un MDM sin respaldo de la alta dirección fracasa por conflictos entre áreas.</li><li>Comenzar con un piloto de una sola entidad maestra antes de escalar a todo el portafolio.</li><li>Establecer el proceso de governance de datos maestros antes o paralelo a la implementación tecnológica.</li><li>Medir continuamente la calidad del Golden Record con dashboards visibles para los Data Owners.</li><li>Actualizar el registro ante la ANPDP si el MDM de clientes consolida datos personales de nuevas fuentes.</li></ul></div>
+<div class="module-section" style="background:#f0fdf4;border-left:4px solid #10b981;"><h2>📌 Resumen del Módulo</h2><p>MDM y RDM son los dominios del DAMA-DMBOK que garantizan la "versión única de la verdad" para las entidades más críticas del negocio. Una implementación exitosa de MDM genera beneficios directos en finanzas, operaciones y experiencia del cliente. En el contexto de la Ley 29733, la consolidación de datos personales en un registro maestro requiere análisis legal cuidadoso de la base de tratamiento y notificación a la ANPDP cuando corresponda.</p></div>
+
+            <!-- ═══ MINIJUEGO INTERACTIVO ═══ -->
+            <div class="minigame-box" id="minigame-section">
+                <div class="minigame-header" style="margin-bottom:0;">
+                    <button class="minigame-toggle-btn" onclick="toggleMinigame(this)">
+                        <div style="display:flex; align-items:center; gap:.75rem;">
+                            <span class="minigame-icon">🎮</span>
+                            <h3>Master Data Analyst — Resuelve el Duplicado</h3>
+                        </div>
+                        <span class="mg-chevron">▼</span>
+                    </button>
+                </div>
+                <div class="minigame-collapsible">
+                    <div style="padding-top: 1.25rem;">
+                        <div class="minigame-scenario">
+                            <strong>📋 Situación:</strong> El sistema CRM tiene estos registros del mismo cliente: (1) "JUAN CARLOS PÉREZ GONZALEZ, DNI: 12345678, Email: jcperez@gmail.com", (2) "JUAN C. PEREZ, DNI: 12345678, Email: juancarlos.perez@empresa.com", (3) "J.C. PÉREZ GONZALEZ, DNI:  (vacío), Email: jcperez@gmail.com". ¿Cuál es el Golden Record correcto?
+                        </div>
+                        <p style="font-weight:600; color:#0f172a; margin-bottom:.75rem;">¿Cuál es la decisión correcta?</p>
+                        <div class="minigame-options" id="mg-opts-8">
+                            
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ No se deben eliminar registros directamente. Primero hay que confirmar que son el mismo cliente (matching por DNI), aplicar survivorship rules y consolidar: nombre del 1, ambos emails como válidos, DNI del 1 y 2.`)">
+                <span class="mg-letter">A</span>
+                <span>Mantener el registro 1 como está y eliminar los otros dos completamente.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, true, `✅ ¡Excelente! Las Survivorship Rules determinan el valor ganador por atributo. El DNI es la clave maestra de matching (verificable en RENIEC). Ambos emails son válidos y deben mantenerse.`)">
+                <span class="mg-letter">B</span>
+                <span>Crear un Golden Record consolidado: nombre completo del registro 1, DNI del registro 1 y 2 (coinciden), ambos emails (el personal y el corporativo).</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ Esto perpetúa el problema de datos duplicados. Las campañas de marketing le llegarán 3 veces, los reportes contarán 3 clientes en lugar de 1, y el análisis de CLV será incorrecto.`)">
+                <span class="mg-letter">C</span>
+                <span>Dejar los tres registros y que el usuario decida cuál usar cuando necesite.</span>
+            </button>
+                        </div>
+                        <div class="minigame-feedback" id="mg-feedback-8" style="display:none;"></div>
+                        <button class="mg-reset-btn" id="mg-reset-8" style="display:none;" onclick="resetMG(8)">↩ Intentar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+            function toggleMinigame(btn) {
+                const box = btn.closest('.minigame-box');
+                box.classList.toggle('collapsed');
+            }
+            function answerMG(btn, isCorrect, feedback) {
+                const allBtns = btn.closest('.minigame-options').querySelectorAll('button');
+                allBtns.forEach(b => { b.disabled = true; b.classList.add('mg-disabled'); });
+                const fb = document.getElementById('mg-feedback-8');
+                const reset = document.getElementById('mg-reset-8');
+                if (isCorrect) {
+                    btn.classList.add('mg-correct');
+                    fb.className = 'minigame-feedback mg-fb-correct';
+                } else {
+                    btn.classList.add('mg-wrong');
+                    fb.className = 'minigame-feedback mg-fb-wrong';
+                }
+                fb.textContent = feedback;
+                fb.style.display = 'block';
+                reset.style.display = 'inline-flex';
+            }
+            function resetMG(n) {
+                const allBtns = document.querySelectorAll('#mg-opts-' + n + ' button');
+                allBtns.forEach(b => { b.disabled = false; b.classList.remove('mg-disabled','mg-correct','mg-wrong'); });
+                const fb = document.getElementById('mg-feedback-' + n);
+                fb.style.display = 'none';
+                document.getElementById('mg-reset-' + n).style.display = 'none';
+            }
+            </script>
+
+        </article></main>
+    <script src="../js/quiz-data.js"></script>
+<script src="../js/quiz.js"></script>
+</body></html>

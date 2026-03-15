@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 12: Big Data e Inteligencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/module.css">
+    <link rel="icon" href="../assets/img/faveicon.png" type="image/png">
+
+<style>
+/* ─── MINIJUEGO ─── */
+.minigame-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid #0ea5e9;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2.5rem 0;
+}
+.minigame-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+.minigame-icon { font-size: 1.8rem; }
+.minigame-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    color: #0c4a6e;
+    margin: 0;
+}
+.minigame-scenario {
+    background: rgba(255,255,255,.7);
+    border-left: 4px solid #0ea5e9;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #0c4a6e;
+    font-size: .93rem;
+    line-height: 1.7;
+}
+.minigame-options {
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+}
+.minigame-option {
+    background: #fff;
+    border: 2px solid #bae6fd;
+    border-radius: .65rem;
+    padding: .85rem 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: .9rem;
+    color: #0f172a;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    transition: border-color .2s, background .2s, transform .15s;
+    line-height: 1.55;
+}
+.minigame-option:hover:not(:disabled) {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    transform: translateX(3px);
+}
+.mg-letter {
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: .8rem;
+    flex-shrink: 0;
+}
+.mg-correct { background: #dcfce7; border-color: #16a34a !important; }
+.mg-correct .mg-letter { background: #16a34a; }
+.mg-wrong { background: #fee2e2; border-color: #dc2626 !important; }
+.mg-wrong .mg-letter { background: #dc2626; }
+.mg-disabled { cursor: not-allowed; opacity: .85; }
+.minigame-feedback {
+    border-radius: .65rem;
+    padding: .9rem 1.1rem;
+    margin-top: .85rem;
+    font-size: .9rem;
+    line-height: 1.65;
+    font-weight: 500;
+}
+.mg-fb-correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.mg-fb-wrong   { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.mg-reset-btn {
+    margin-top: .75rem;
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    padding: .55rem 1.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.mg-reset-btn:hover { background: #0284c7; }
+
+/* ─── MINIJUEGO TOGGLE ─── */
+.minigame-toggle-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+.mg-chevron {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    color: #0ea5e9;
+}
+.minigame-collapsible {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+    opacity: 1;
+    }
+.minigame-box.collapsed .minigame-collapsible {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+.minigame-box.collapsed .mg-chevron {
+    transform: rotate(-90deg);
+}
+
+</style>
+
+</head><body>
+<header><div class="header-container">
+    <div class="header-logo-group">
+        <img src="../assets/img/logotipo.png" alt="Logo" class="header-logo">
+        <div class="header-text"><h1>Módulo 12: Big Data e Inteligencia</h1><p>DAMA-DMBOK · Gobierno Corporativo · Ley N.° 29733</p></div>
+    </div>
+    <nav class="header-nav"><a href="../index.html" class="btn btn-outline" style="padding:.5rem 1rem;">← Dashboard</a></nav>
+</div></header>
+<main class="container"><article class="module-content animate-fade">
+<div style="display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap;">
+    <a href="../11-calidad.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">← Módulo 11</a>
+    <span style="flex:1;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94a3b8;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Módulo 12 / 12</span>
+    <a href="../certificado.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">Certificado →</a>
+</div>
+<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.75rem;">
+    <span class="module-badge blue">📘 DAMA-DMBOK</span>
+    <span class="module-badge gold">⚖️ Gobierno Corporativo</span>
+    <span class="module-badge red">🔒 Ley 29733</span>
+</div>
+<div class="module-section"><h2>📋 Descripción del Módulo</h2><p>El dominio de Big Data e Inteligencia abarca las tecnologías, arquitecturas y prácticas para procesar, analizar y extraer valor de conjuntos de datos que superan la capacidad de las herramientas tradicionales en volumen, velocidad y variedad. Incluye ecosistemas distribuidos, analítica avanzada, machine learning e inteligencia artificial aplicada a casos de uso empresariales.</p></div>
+<div class="module-section accent-blue"><h2>📘 Relación con DAMA-DMBOK</h2><p>En el DAMA-DMBOK, el capítulo de Big Data reconoce que los principios de gobierno de datos aplican plenamente a los entornos de alto volumen: los datos de Big Data también requieren arquitectura, calidad, seguridad y metadatos. El DAMA-DMBOK no define Big Data como un dominio separado sino como una extensión de los principios de gestión de datos a nuevas tecnologías y escalas.</p></div>
+<div class="module-section accent-gold"><h2>⚖️ Relación con Gobierno Corporativo</h2><p>Desde el gobierno corporativo, las iniciativas de Big Data e IA representan inversiones estratégicas de alto riesgo y alto retorno que requieren supervisión del directorio. El uso de modelos de machine learning para decisiones de negocio (crédito, seguro, precios, RRHH) implica nuevas responsabilidades de gobierno: explicabilidad, sesgo algorítmico y cumplimiento regulatorio de los modelos de IA.</p></div>
+<div class="module-section accent-red"><h2>🔒 Cumplimiento — Ley N.° 29733</h2><p>La Ley 29733 define en su artículo 13 los datos sensibles, que incluyen información de salud, origen étnico, opiniones políticas y creencias religiosas — categorías frecuentemente presentes en datasets de Big Data no estructurado (redes sociales, texto libre, imágenes). El artículo 12 prohíbe el tratamiento automatizado de decisiones que afecten significativamente al titular sin intervención humana, lo que impone límites al uso de modelos de IA.</p></div>
+<div class="module-section"><h2>🎯 Objetivos de Aprendizaje</h2><ul class="module-list"><li>Comprender las cinco Vs del Big Data y su impacto en la arquitectura y gobierno de datos.</li><li>Diseñar arquitecturas de datos para Big Data: Lambda, Kappa y Data Lakehouse.</li><li>Aplicar los principios de gobierno del DAMA-DMBOK a ecosistemas de procesamiento distribuido.</li><li>Comprender los conceptos fundamentales de Machine Learning y su gobernanza.</li><li>Cumplir la Ley 29733 en el tratamiento de datos personales en contextos de Big Data e IA.</li></ul></div>
+<div class="module-section"><h2>🔑 Conceptos Clave</h2><ul class="module-list"><li><strong>Las 5 Vs del Big Data:</strong> Volumen (escala), Velocidad (procesamiento en tiempo real), Variedad (estructurado/semiestructurado/no estructurado), Veracidad (calidad) y Valor (outcomes de negocio).</li><li><strong>Data Lake:</strong> Repositorio de datos en su formato nativo (raw) a bajo costo, típicamente en almacenamiento de objetos (S3, ADLS).</li><li><strong>Arquitectura Lambda:</strong> Patrón que combina procesamiento batch (vista histórica) y streaming (vista en tiempo real) para análisis completo.</li><li><strong>MLOps:</strong> Conjunto de prácticas para desplegar, monitorear y gobernar modelos de machine learning en producción.</li><li><strong>Gobernanza de IA:</strong> Marco de políticas y controles para asegurar que los modelos de IA sean explicables, imparciales, seguros y conformes a normas.</li></ul></div>
+<div class="module-section"><h2>⚙️ Explicación Técnica Detallada</h2><p>La arquitectura moderna de Big Data evolucionó de Hadoop/MapReduce (2004) hacia arquitecturas cloud-native: (1) Data Lake — almacenamiento masivo y económico en S3/ADLS/GCS; (2) Procesamiento — Apache Spark para batch, Apache Flink para streaming y dbt para transformaciones SQL; (3) Data Lakehouse — Delta Lake/Iceberg/Hudi aplicando capacidades ACID y de gobierno al Data Lake; (4) Capa Semántica / Data Mesh — federación de datos por dominio de negocio con contratos de datos. La gobernanza en Big Data requiere aplicar los mismos principios del DAMA-DMBOK a escala: catálogo, calidad, lineaje, seguridad y acceso, con herramientas diseñadas para volúmenes masivos.</p></div>
+<div class="module-section accent-blue"><h2>🏢 Ejemplos en Organizaciones</h2><p>El BCP (Banco de Crédito del Perú) implementó una plataforma de Big Data en AWS con Apache Spark para analizar en tiempo real las transacciones de 8 millones de clientes. El modelo de detección de fraude procesa más de 2 millones de transacciones diarias con una precisión del 97.3%, bloqueando operaciones fraudulentas en menos de 200 milisegundos y ahorrando más de 40 millones de soles anuales. El sistema fue auditado para garantizar que no usa datos sensibles (Ley 29733 art. 13) en sus features de predicción.</p></div>
+<div class="module-section"><h2>✅ Buenas Prácticas Internacionales</h2><ul class="module-list"><li>Aplicar los principios de gobierno del DAMA-DMBOK desde el diseño de la arquitectura Big Data, no como una adición posterior.</li><li>Implementar Data Governance en el Data Lake desde el día uno: catálogo, acceso, calidad y lineaje.</li><li>Usar el patrón Medallion (Bronze/Silver/Gold) para garantizar calidad progresiva en el procesamiento.</li><li>Gobernar los modelos de ML con MLOps: versionado, monitoreo de drift y documentación de features.</li><li>Realizar un Análisis de Impacto en Privacidad (PIA) antes de cualquier proyecto de Big Data con datos personales.</li></ul></div>
+<div class="module-section accent-red"><h2>⚠️ Errores Comunes</h2><ul class="module-list"><li>Construir Data Lakes sin gobierno, generando "Data Swamps" donde nadie puede encontrar ni confiar en los datos.</li><li>Usar datos personales sensibles (salud, origen étnico) como features en modelos de ML sin base legal (Ley 29733 art. 13).</li><li>Desplegar modelos de ML en decisiones sobre personas (crédito, seguros) sin mecanismos de explicabilidad.</li><li>No monitorear el rendimiento de los modelos en producción, generando decisiones sesgadas o erróneas.</li><li>Ignorar el sesgo algorítmico en los datos de entrenamiento, perpetuando discriminaciones sistémicas.</li></ul></div>
+<div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Spotify analiza 100 petabytes de datos de comportamiento de usuarios usando Apache Kafka y Spark para generar recomendaciones personalizadas que retienen al 87% de sus usuarios premium. Su sistema de Discover Weekly generó más de 2,000 millones de playlists personalizadas con una tasa de satisfacción del 91%. En Perú, el INDECOPI usa análisis de texto (NLP) sobre más de 500,000 reclamos anuales para identificar patrones de infracción y priorizar investigaciones sectoriales.</p></div>
+<div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Apache Spark:</strong> Motor de procesamiento distribuido para batch y streaming a escala de petabytes.</li><li><strong>Apache Kafka:</strong> Plataforma de streaming de eventos para procesamiento de datos en tiempo real.</li><li><strong>Databricks:</strong> Plataforma cloud unificada de Data Lakehouse con Spark gestionado, MLflow y Delta Lake.</li><li><strong>dbt + Delta Lake:</strong> Combinación para transformaciones gobernadas sobre Data Lakehouses con soporte ACID.</li><li><strong>MLflow:</strong> Plataforma open-source para gestión del ciclo de vida de modelos ML: tracking, registro y despliegue.</li></ul></div>
+<div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Una empresa de salud privada peruana con 15 clínicas quiere implementar un modelo de ML para predecir la probabilidad de re-hospitalización de pacientes crónicos en los próximos 30 días. Diseña el gobierno de este proyecto de IA: (a) Arquitectura de datos: fuentes, procesamiento y almacenamiento de los datos clínicos; (b) Análisis de impacto en privacidad (PIA) según Ley 29733 para datos de salud (art. 13); (c) Evaluación de base legal para el tratamiento de datos de salud en el modelo; (d) Marco de gobernanza del modelo: documentación, explicabilidad y monitoreo de sesgo; (e) Procedimiento para el derecho del paciente a no ser objeto de decisiones automatizadas sin intervención humana (Ley 29733 art. 12).</p></div>
+<div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list"><li>Comenzar con casos de uso de Big Data que tengan ROI demostrable y bajo riesgo regulatorio.</li><li>Implementar gobierno del Data Lake desde el primer día con catálogo, acceso por roles y linaje.</li><li>Documentar todos los modelos de ML con Model Cards: datos de entrenamiento, rendimiento, sesgos y limitaciones.</li><li>Establecer un Comité de Ética de IA para revisar modelos que toman decisiones sobre personas.</li><li>Actualizar el registro de bancos de datos ante ANPDP cuando se incorporen nuevas fuentes de datos personales en proyectos de Big Data.</li></ul></div>
+<div class="module-section" style="background:#f0fdf4;border-left:4px solid #10b981;"><h2>📌 Resumen del Módulo</h2><p>Big Data e Inteligencia Artificial representan la frontera más avanzada de la gestión de datos, donde los principios del DAMA-DMBOK se aplican a escalas y velocidades sin precedentes. El gobierno de datos en entornos de Big Data es más complejo y más crítico que en entornos tradicionales, especialmente cuando los modelos de IA toman decisiones que afectan a las personas. En el contexto peruano, la Ley 29733 impone límites claros y necesarios al uso de datos personales en sistemas de IA, convirtiendo el gobierno corporativo en el guardián del uso ético y legal de la inteligencia de datos.</p></div>
+
+            <!-- ═══ MINIJUEGO INTERACTIVO ═══ -->
+            <div class="minigame-box" id="minigame-section">
+                <div class="minigame-header" style="margin-bottom:0;">
+                    <button class="minigame-toggle-btn" onclick="toggleMinigame(this)">
+                        <div style="display:flex; align-items:center; gap:.75rem;">
+                            <span class="minigame-icon">🎮</span>
+                            <h3>Guardián de IA Responsable — Evalúa el Modelo</h3>
+                        </div>
+                        <span class="mg-chevron">▼</span>
+                    </button>
+                </div>
+                <div class="minigame-collapsible">
+                    <div style="padding-top: 1.25rem;">
+                        <div class="minigame-scenario">
+                            <strong>📋 Situación:</strong> Un banco peruano quiere usar un modelo de Machine Learning para aprobar o rechazar préstamos automáticamente, sin intervención humana. El modelo fue entrenado con datos históricos de los últimos 10 años. El equipo de ciencia de datos advierte que el modelo rechaza préstamos a personas de ciertas regiones geográficas a tasas significativamente más altas.
+                        </div>
+                        <p style="font-weight:600; color:#0f172a; margin-bottom:.75rem;">¿Cuál es la decisión correcta?</p>
+                        <div class="minigame-options" id="mg-opts-12">
+                            
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ Un modelo con sesgo geográfico puede ser un proxy de sesgo étnico o socioeconómico. La Ley 29733 art. 12 y el principio de no discriminación del gobierno corporativo prohíben este tipo de decisión automatizada perjudicial.`)">
+                <span class="mg-letter">A</span>
+                <span>Desplegar el modelo en producción porque el rendimiento general (AUC 0.92) es excelente y la región no está incluida en el modelo.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, true, `✅ ¡Decisión ética y legal correcta! El DAMA-DMBOK y los principios de Gobernanza de IA exigen modelos explicables, imparciales y con supervisión humana. La Ley 29733 art. 12 prohíbe decisiones automatizadas sin intervención humana que afecten significativamente al titular.`)">
+                <span class="mg-letter">B</span>
+                <span>Pausar el despliegue, investigar el sesgo, aplicar técnicas de fairness e implementar revisión humana obligatoria para rechazos, con derecho a explicación del cliente.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ Excluir regiones es discriminación por omisión y puede violar el principio de servicio universal. La solución correcta es corregir el sesgo del modelo, no excluir poblaciones del acceso al crédito.`)">
+                <span class="mg-letter">C</span>
+                <span>Usar el modelo solo para clientes de Lima y excluir las otras regiones hasta mejorar el modelo.</span>
+            </button>
+                        </div>
+                        <div class="minigame-feedback" id="mg-feedback-12" style="display:none;"></div>
+                        <button class="mg-reset-btn" id="mg-reset-12" style="display:none;" onclick="resetMG(12)">↩ Intentar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+            function toggleMinigame(btn) {
+                const box = btn.closest('.minigame-box');
+                box.classList.toggle('collapsed');
+            }
+            function answerMG(btn, isCorrect, feedback) {
+                const allBtns = btn.closest('.minigame-options').querySelectorAll('button');
+                allBtns.forEach(b => { b.disabled = true; b.classList.add('mg-disabled'); });
+                const fb = document.getElementById('mg-feedback-12');
+                const reset = document.getElementById('mg-reset-12');
+                if (isCorrect) {
+                    btn.classList.add('mg-correct');
+                    fb.className = 'minigame-feedback mg-fb-correct';
+                } else {
+                    btn.classList.add('mg-wrong');
+                    fb.className = 'minigame-feedback mg-fb-wrong';
+                }
+                fb.textContent = feedback;
+                fb.style.display = 'block';
+                reset.style.display = 'inline-flex';
+            }
+            function resetMG(n) {
+                const allBtns = document.querySelectorAll('#mg-opts-' + n + ' button');
+                allBtns.forEach(b => { b.disabled = false; b.classList.remove('mg-disabled','mg-correct','mg-wrong'); });
+                const fb = document.getElementById('mg-feedback-' + n);
+                fb.style.display = 'none';
+                document.getElementById('mg-reset-' + n).style.display = 'none';
+            }
+            </script>
+
+        </article></main>
+    <script src="../js/quiz-data.js"></script>
+<script src="../js/quiz.js"></script>
+</body></html>

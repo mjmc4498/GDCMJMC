@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Almacenamiento de Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/module.css">
+    <link rel="icon" href="../assets/img/faveicon.png" type="image/png">
+
+<style>
+/* ─── MINIJUEGO ─── */
+.minigame-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid #0ea5e9;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2.5rem 0;
+}
+.minigame-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1rem;
+}
+.minigame-icon { font-size: 1.8rem; }
+.minigame-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    color: #0c4a6e;
+    margin: 0;
+}
+.minigame-scenario {
+    background: rgba(255,255,255,.7);
+    border-left: 4px solid #0ea5e9;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #0c4a6e;
+    font-size: .93rem;
+    line-height: 1.7;
+}
+.minigame-options {
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+}
+.minigame-option {
+    background: #fff;
+    border: 2px solid #bae6fd;
+    border-radius: .65rem;
+    padding: .85rem 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: .9rem;
+    color: #0f172a;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    transition: border-color .2s, background .2s, transform .15s;
+    line-height: 1.55;
+}
+.minigame-option:hover:not(:disabled) {
+    border-color: #0ea5e9;
+    background: #f0f9ff;
+    transform: translateX(3px);
+}
+.mg-letter {
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: .8rem;
+    flex-shrink: 0;
+}
+.mg-correct { background: #dcfce7; border-color: #16a34a !important; }
+.mg-correct .mg-letter { background: #16a34a; }
+.mg-wrong { background: #fee2e2; border-color: #dc2626 !important; }
+.mg-wrong .mg-letter { background: #dc2626; }
+.mg-disabled { cursor: not-allowed; opacity: .85; }
+.minigame-feedback {
+    border-radius: .65rem;
+    padding: .9rem 1.1rem;
+    margin-top: .85rem;
+    font-size: .9rem;
+    line-height: 1.65;
+    font-weight: 500;
+}
+.mg-fb-correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+.mg-fb-wrong   { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+.mg-reset-btn {
+    margin-top: .75rem;
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    padding: .55rem 1.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.mg-reset-btn:hover { background: #0284c7; }
+
+/* ─── MINIJUEGO TOGGLE ─── */
+.minigame-toggle-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+.mg-chevron {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    color: #0ea5e9;
+}
+.minigame-collapsible {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+    opacity: 1;
+    }
+.minigame-box.collapsed .minigame-collapsible {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+.minigame-box.collapsed .mg-chevron {
+    transform: rotate(-90deg);
+}
+
+</style>
+
+</head>
+<body>
+<header><div class="header-container">
+    <div class="header-logo-group">
+        <img src="../assets/img/logotipo.png" alt="Logo" class="header-logo">
+        <div class="header-text"><h1>Módulo 4: Almacenamiento de Datos</h1><p>DAMA-DMBOK · Gobierno Corporativo · Ley N.° 29733</p></div>
+    </div>
+    <nav class="header-nav"><a href="../index.html" class="btn btn-outline" style="padding:.5rem 1rem;">← Dashboard</a></nav>
+</div></header>
+<main class="container"><article class="module-content animate-fade">
+<div style="display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap;">
+    <a href="../03-modelado.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">← Módulo 3</a>
+    <span style="flex:1;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#94a3b8;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Módulo 04 / 12</span>
+    <a href="../05-seguridad.html" class="btn btn-outline" style="font-size:.82rem;padding:.4rem .9rem;">Módulo 5 →</a>
+</div>
+<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.75rem;">
+    <span class="module-badge blue">📘 DAMA-DMBOK</span>
+    <span class="module-badge gold">⚖️ Gobierno Corporativo</span>
+    <span class="module-badge red">🔒 Ley 29733</span>
+</div>
+<div class="module-section"><h2>📋 Descripción del Módulo</h2><p>El Almacenamiento de Datos abarca el diseño, implementación y administración de las tecnologías y plataformas que persisten los datos de la organización. Incluye bases de datos relacionales, NoSQL, almacenes de datos (Data Warehouses), lagos de datos (Data Lakes) y bases de datos en la nube, así como la gestión de su rendimiento, disponibilidad y seguridad.</p></div>
+<div class="module-section accent-blue"><h2>📘 Relación con DAMA-DMBOK</h2><p>En el DAMA-DMBOK, el dominio de Almacenamiento y Operaciones de Datos cubre las actividades técnicas de gestión de plataformas de datos: administración de bases de datos (DBA), garantía de disponibilidad (SLAs), gestión de respaldos (backup/recovery), optimización de rendimiento (tuning) y planificación de capacidad. Es la infraestructura operativa sobre la que reposan todos los demás dominios.</p></div>
+<div class="module-section accent-gold"><h2>⚖️ Relación con Gobierno Corporativo</h2><p>Desde el gobierno corporativo, las decisiones sobre tecnologías de almacenamiento son inversiones estratégicas que el directorio supervisa. El tiempo de inactividad de una base de datos crítica tiene impacto financiero directo. Las políticas de retención y eliminación de datos son también decisiones de gobierno que vinculan a los responsables legales de la organización con la infraestructura técnica.</p></div>
+<div class="module-section accent-red"><h2>🔒 Cumplimiento — Ley N.° 29733</h2><p>La Ley 29733 en su artículo 9 establece el principio de seguridad, exigiendo que los titulares de bancos de datos personales implementen medidas de seguridad técnicas y organizativas. En el almacenamiento, esto implica: cifrado de datos en reposo, control de acceso granular, respaldos verificados, y registros de auditoría de acceso. El incumplimiento puede resultar en multas de hasta 100 UIT (Unidad Impositiva Tributaria).</p></div>
+<div class="module-section"><h2>🎯 Objetivos de Aprendizaje</h2><ul class="module-list"><li>Identificar y comparar los modelos de tecnología de almacenamiento: OLTP, OLAP, NoSQL, NewSQL, Data Lake, Data Lakehouse.</li><li>Diseñar estrategias de backup y recuperación ante desastres (BCP/DRP) para datos críticos.</li><li>Aplicar técnicas de optimización: indexación, particionamiento, compresión y caching.</li><li>Implementar controles de seguridad técnica en el almacenamiento según Ley 29733.</li><li>Evaluar criterios de selección de plataformas de almacenamiento on-premise vs. cloud.</li></ul></div>
+<div class="module-section"><h2>🔑 Conceptos Clave</h2><ul class="module-list"><li><strong>OLTP (Online Transaction Processing):</strong> Sistemas optimizados para transacciones frecuentes y concurrentes: bancos de datos operacionales.</li><li><strong>OLAP (Online Analytical Processing):</strong> Sistemas optimizados para consultas analíticas complejas sobre grandes volúmenes de datos históricos.</li><li><strong>Data Warehouse:</strong> Repositorio centralizado de datos estructurados, históricos e integrados para análisis empresarial.</li><li><strong>Data Lake:</strong> Repositorio de datos en formato nativo (estructurado, semiestructurado, no estructurado) a bajo costo.</li><li><strong>Data Lakehouse:</strong> Arquitectura híbrida que combina la flexibilidad del Data Lake con la calidad y gobierno del Data Warehouse.</li></ul></div>
+<div class="module-section"><h2>⚙️ Explicación Técnica Detallada</h2><p>La gestión del almacenamiento de datos en el DAMA-DMBOK cubre el ciclo de vida completo: (1) Aprovisionamiento — selección de tecnología, instalación y configuración; (2) Operación — monitoreo de rendimiento, gestión de espacio, mantenimiento de índices; (3) Respaldo y Recuperación — políticas de backup (completo, incremental, diferencial) con pruebas periódicas de restore; (4) Archivado y Eliminación — políticas de retención alineadas con requisitos legales (Ley 29733, normativas sectoriales); (5) Optimización — tuning de consultas, particionamiento, sharding y caching. La arquitectura de almacenamiento moderna sigue el patrón Lambda (procesamiento batch + streaming) o Kappa (solo streaming).</p></div>
+<div class="module-section accent-blue"><h2>🏢 Ejemplos en Organizaciones</h2><p>Claro Perú migró sus datos de facturación (más de 15 millones de registros mensuales) de Oracle on-premise a Amazon Redshift, logrando una reducción del 65% en costos de almacenamiento y mejorando los tiempos de consulta analítica de 4 horas a 8 minutos. Implementaron cifrado AES-256 en reposo para cumplir con la Ley 29733 en la protección de datos de clientes.</p></div>
+<div class="module-section"><h2>✅ Buenas Prácticas Internacionales</h2><ul class="module-list"><li>Diseñar la estrategia de almacenamiento alineada con el ciclo de vida del dato (activo, inactivo, archivado).</li><li>Implementar siempre cifrado en reposo (AES-256) para datos personales y confidenciales.</li><li>Probar los procesos de restauración de respaldos al menos mensualmente.</li><li>Documentar las políticas de retención y eliminación de datos alineadas con requisitos legales.</li><li>Usar particionamiento estratégico para mejorar el rendimiento de consultas analíticas frecuentes.</li></ul></div>
+<div class="module-section accent-red"><h2>⚠️ Errores Comunes</h2><ul class="module-list"><li>Almacenar indefinidamente todos los datos sin políticas de retención ni eliminación.</li><li>No cifrar datos personales en reposo, incumpliendo el artículo 9 de la Ley 29733.</li><li>No probar los backups regularmente hasta que se necesita una recuperación de emergencia.</li><li>Elegir tecnologías de moda en lugar de las adecuadas para los casos de uso reales.</li><li>No planificar la capacidad de almacenamiento, generando crisis operativas por espacio insuficiente.</li></ul></div>
+<div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Amazon usa más de 100 servicios de almacenamiento distintos en su infraestructura AWS, incluyendo S3, DynamoDB, RDS y Redshift, eligiendo el motor adecuado para cada patrón de acceso. En Perú, el MEF implementó un Data Warehouse con SQL Server Analysis Services para el Presupuesto por Resultados, procesando datos de más de 2,000 entidades públicas con reportes en tiempo real para el Congreso.</p></div>
+<div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Amazon Redshift:</strong> Data Warehouse columnar en la nube, ideal para analítica a gran escala.</li><li><strong>Snowflake:</strong> Data Warehouse as a Service con separación de almacenamiento y cómputo, compatible con DAMA.</li><li><strong>Apache Iceberg / Delta Lake:</strong> Formatos de tabla open-source para Data Lakehouses con soporte ACID.</li><li><strong>Oracle Database / PostgreSQL:</strong> Motores OLTP robustos para datos transaccionales críticos.</li><li><strong>AWS S3 / Azure Blob Storage:</strong> Almacenamiento de objetos económico para Data Lakes empresariales.</li></ul></div>
+<div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Diseña la arquitectura de almacenamiento para una empresa de retail peruana con 200 tiendas, 5 millones de transacciones diarias y requisito de analítica en tiempo real. Especifica: (a) Motores de almacenamiento por capa (transaccional, staging, analítica, archivado); (b) Política de retención de datos de clientes según Ley 29733; (c) Estrategia de backup con RTO y RPO; (d) Controles de seguridad técnica para datos personales; (e) Estimación de costos on-premise vs. cloud (Redshift/Snowflake).</p></div>
+<div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list"><li>Comenzar por el inventario de datos existentes y sus patrones de acceso antes de elegir tecnología.</li><li>Diseñar la política de retención considerando obligaciones contractuales, fiscales y de la Ley 29733.</li><li>Implementar monitoreo automatizado de rendimiento y alertas antes de que los problemas afecten a usuarios.</li><li>Adoptar el cifrado como estándar desde el inicio, no como medida correctiva posterior.</li><li>Evaluar la arquitectura Data Lakehouse para organizaciones que requieren tanto flexibilidad como gobierno.</li></ul></div>
+<div class="module-section" style="background:#f0fdf4;border-left:4px solid #10b981;"><h2>📌 Resumen del Módulo</h2><p>El Almacenamiento de Datos es la infraestructura operativa fundamental del ecosistema de información. El DAMA-DMBOK lo enmarca como un dominio de gestión que requiere tanto competencia técnica (tuning, backup, disponibilidad) como alineación con el gobierno y el cumplimiento. En el contexto peruano, la Ley 29733 impone requisitos técnicos concretos de seguridad en el almacenamiento de datos personales que convierten este dominio en una responsabilidad legal de primer orden.</p></div>
+
+            <!-- ═══ MINIJUEGO INTERACTIVO ═══ -->
+            <div class="minigame-box" id="minigame-section">
+                <div class="minigame-header" style="margin-bottom:0;">
+                    <button class="minigame-toggle-btn" onclick="toggleMinigame(this)">
+                        <div style="display:flex; align-items:center; gap:.75rem;">
+                            <span class="minigame-icon">🎮</span>
+                            <h3>Guardia del Almacén — Crisis de Disponibilidad</h3>
+                        </div>
+                        <span class="mg-chevron">▼</span>
+                    </button>
+                </div>
+                <div class="minigame-collapsible">
+                    <div style="padding-top: 1.25rem;">
+                        <div class="minigame-scenario">
+                            <strong>📋 Situación:</strong> Son las 2 AM de un lunes. La base de datos principal del sistema de facturación está caída. El RTO definido es de 4 horas. El DBA lleva 3 horas intentando recuperarla con el backup, pero descubre que nadie probó el proceso de restauración en 6 meses y el backup está corrupto.
+                        </div>
+                        <p style="font-weight:600; color:#0f172a; margin-bottom:.75rem;">¿Cuál es la decisión correcta?</p>
+                        <div class="minigame-options" id="mg-opts-4">
+                            
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ El soporte del proveedor puede tomar más tiempo del disponible por el RTO. El problema es la falta de un proceso de DRP probado, no del software.`)">
+                <span class="mg-letter">A</span>
+                <span>Llamar al proveedor de la base de datos para que solucione el problema.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, true, `✅ ¡Correcto! Un buen DRP incluye: sitio alterno, backups verificados regularmente y comunicación al negocio. El backup sin pruebas equivale a no tener backup.`)">
+                <span class="mg-letter">B</span>
+                <span>Activar el Plan de Recuperación ante Desastres (DRP) con el sitio de contingencia (DR Site) y escalar al negocio informando el impacto.</span>
+            </button>
+            <button class="minigame-option" onclick="answerMG(this, false, `❌ Reiniciar un sistema de base de datos con archivos corrompidos puede ampliar el daño. Sin un DRP estructurado, la recuperación improvisada es más riesgosa.`)">
+                <span class="mg-letter">C</span>
+                <span>Reiniciar el servidor y esperar que se recupere solo.</span>
+            </button>
+                        </div>
+                        <div class="minigame-feedback" id="mg-feedback-4" style="display:none;"></div>
+                        <button class="mg-reset-btn" id="mg-reset-4" style="display:none;" onclick="resetMG(4)">↩ Intentar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+            function toggleMinigame(btn) {
+                const box = btn.closest('.minigame-box');
+                box.classList.toggle('collapsed');
+            }
+            function answerMG(btn, isCorrect, feedback) {
+                const allBtns = btn.closest('.minigame-options').querySelectorAll('button');
+                allBtns.forEach(b => { b.disabled = true; b.classList.add('mg-disabled'); });
+                const fb = document.getElementById('mg-feedback-4');
+                const reset = document.getElementById('mg-reset-4');
+                if (isCorrect) {
+                    btn.classList.add('mg-correct');
+                    fb.className = 'minigame-feedback mg-fb-correct';
+                } else {
+                    btn.classList.add('mg-wrong');
+                    fb.className = 'minigame-feedback mg-fb-wrong';
+                }
+                fb.textContent = feedback;
+                fb.style.display = 'block';
+                reset.style.display = 'inline-flex';
+            }
+            function resetMG(n) {
+                const allBtns = document.querySelectorAll('#mg-opts-' + n + ' button');
+                allBtns.forEach(b => { b.disabled = false; b.classList.remove('mg-disabled','mg-correct','mg-wrong'); });
+                const fb = document.getElementById('mg-feedback-' + n);
+                fb.style.display = 'none';
+                document.getElementById('mg-reset-' + n).style.display = 'none';
+            }
+            </script>
+
+        </article></main>
+    <script src="../js/quiz-data.js"></script>
+<script src="../js/quiz.js"></script>
+</body></html>

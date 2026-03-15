@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gobierno de Datos - DAMA-DMBOK | Perú</title>
+    <meta name="description"
+        content="Aprende Gobierno de Datos basado en DAMA-DMBOK con aplicaciones en el contexto peruano.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/img/faveicon.png" type="image/png">
+</head>
+
+<body>
+    <!-- Global Loader -->
+    <div id="global-loader">
+        <div class="loader-logo-wrapper">
+            <div class="loader-rings"></div>
+            <img src="assets/img/logotipo.png" alt="Cargando Sistema" class="loader-logo">
+        </div>
+        <div class="loader-text">
+            Cargando <span class="loader-dot">.</span><span class="loader-dot">.</span><span class="loader-dot">.</span>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('global-loader');
+                if (loader) {
+                    loader.classList.add('hidden');
+                    setTimeout(() => loader.style.display = 'none', 600);
+                }
+            }, 600);
+        });
+    </script>
+    <header>
+        <div class="header-container">
+            <div class="header-logo-group">
+                <img src="assets/img/logotipo.png" alt="Logo del Sistema" class="header-logo">
+                <div class="header-text">
+                    <h1>Expertos en Data Governance</h1>
+                    <p>Desarrollado en base al DAMA-DMBOK para Perú</p>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="certificado.html">Certificado</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero animate-fade">
+            <h1>Domina el Gobierno de Datos</h1>
+            <div class="dama-badge">Basado en el DAMA-DMBOK & Gobierno Corporativo.</div>
+            <p>Explora los 12 dominios de conocimiento del DAMA y conviértete en un especialista en gestión estratégica
+                de información.</p>
+        </section>
+
+        <section id="cert-section" class="animate-fade"
+            style="display: none; text-align: center; margin-bottom: 3rem; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 2rem; border-radius: 1rem; box-shadow: var(--shadow);">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">🎓 ¡Felicidades! Has completado el curso</h2>
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Has demostrado dominio en los 12 ejes del DAMA-DMBOK.
+            </p>
+            <a href="certificado.html" class="btn"
+                style="background: white; color: #059669; font-size: 1.2rem; padding: 1rem 2rem;">Obtener mi Certificado
+                Formal</a>
+        </section>
+
+        <div class="dashboard-controls"
+            style="display: flex; justify-content: flex-end; margin-bottom: 1rem; animation: fadeIn 0.8s ease;">
+            <button id="btn-reset-all" class="btn btn-outline"
+                style="font-size: 0.85rem; padding: 0.5rem 1.2rem; border-color: #ef4444; color: #ef4444; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.1rem;">↺</span> Reiniciar Progreso
+            </button>
+        </div>
+
+        <div class="module-grid" id="moduleGrid">
+            <!-- Módulos se cargarán dinámicamente o estarán aquí -->
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 <strong>mjmc4498</strong>. Todos los derechos reservados.</p>
+            <p>Sistema Educativo de Gobierno de Datos</p>
+            <div class="dama-attribution">Basado estrictamente en los lineamientos del DAMA-DMBOK</div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

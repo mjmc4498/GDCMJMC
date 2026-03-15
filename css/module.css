@@ -1,0 +1,310 @@
+/**
+ * Module-specific Styles
+ * These override the global dark-mode theme for module content areas
+ * to create a clean, high-contrast light-mode reading experience.
+ */
+
+/* ============ MODULE PAGE LAYOUT ============ */
+.module-content {
+    max-width: 900px;
+    margin: 2rem auto 3rem;
+    padding: 3.5rem;
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(59,130,246,0.08);
+    position: relative;
+    z-index: 10;
+    color: #1e293b;
+}
+
+/* ============ MODULE TYPOGRAPHY ============ */
+.module-content h1,
+.module-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #0f172a;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 1.9rem;
+}
+
+.module-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #1e293b;
+    font-size: 1.35rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.module-content p {
+    color: #334155;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+}
+
+.module-content ul,
+.module-content ol {
+    color: #334155;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.75rem;
+    line-height: 1.9;
+}
+
+.module-content li {
+    margin-bottom: 0.6rem;
+}
+
+.module-content strong {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+/* ============ FUN FACT BOX ============ */
+.fun-fact {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 5px solid #f59e0b;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.fun-fact strong {
+    color: #92400e;
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fun-fact p {
+    color: #78350f !important;
+    margin: 0 !important;
+    font-size: 1rem !important;
+}
+
+.fun-fact-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+/* ============ INTERACTIVE SIMULATOR BOX ============ */
+.interactive-section {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-left: 5px solid #0ea5e9;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.interactive-section h3 {
+    color: #075985;
+    font-size: 1.3rem;
+    margin-top: 0 !important;
+}
+
+.interactive-section p {
+    color: #0c4a6e !important;
+}
+
+.interactive-section em {
+    font-style: italic;
+    color: #0369a1;
+}
+
+/* ============ ROLE CARDS ============ */
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0 2rem;
+}
+
+.role-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.role-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+.role-card h3 {
+    color: #1e40af;
+    font-size: 1.1rem;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.role-card p {
+    color: #475569 !important;
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+}
+
+/* ============ QUIZ OPTIONS IN MINI-GAMES ============ */
+.quiz-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.75rem;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    color: #1e293b;
+    font-size: 0.95rem;
+    padding: 0.9rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.quiz-option:hover {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    transform: translateX(4px);
+}
+
+.quiz-option.correct, .quiz-option.correct:hover {
+    background: #dcfce7;
+    border-color: #16a34a;
+    color: #14532d;
+}
+
+.quiz-option.incorrect, .quiz-option.incorrect:hover {
+    background: #fee2e2;
+    border-color: #dc2626;
+    color: #7f1d1d;
+}
+
+/* ============ MODULE-LEVEL NAV BUTTONS ============ */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e2e8f0;
+}
+
+/* Overrides for the header text inside module pages (stays dark theme) */
+.header-text p {
+    color: #06b6d4 !important;
+}
+
+/* ============ NEW MODULE SECTION CARDS ============ */
+.module-section {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #64748b;
+    border-radius: 0.85rem;
+    padding: 1.75rem 2rem;
+    margin: 1.5rem 0;
+}
+
+.module-section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem !important;
+    color: #0f172a !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.85rem !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1.5px solid #e2e8f0 !important;
+}
+
+.module-section p {
+    font-size: 0.97rem !important;
+    color: #334155 !important;
+    line-height: 1.85 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Accent variants */
+.module-section.accent-blue {
+    background: #eff6ff;
+    border-left-color: #3b82f6;
+}
+
+.module-section.accent-gold {
+    background: #fffbeb;
+    border-left-color: #f59e0b;
+}
+
+.module-section.accent-red {
+    background: #fff1f2;
+    border-left-color: #ef4444;
+}
+
+/* ============ MODULE BADGE PILLS ============ */
+.module-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1.5px solid transparent;
+}
+
+.module-badge.blue {
+    background: rgba(59,130,246,0.1);
+    border-color: rgba(59,130,246,0.3);
+    color: #1d4ed8;
+}
+
+.module-badge.gold {
+    background: rgba(245,158,11,0.1);
+    border-color: rgba(245,158,11,0.3);
+    color: #92400e;
+}
+
+.module-badge.red {
+    background: rgba(239,68,68,0.1);
+    border-color: rgba(239,68,68,0.3);
+    color: #b91c1c;
+}
+
+/* ============ MODULE CONTENT LIST ============ */
+.module-list {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+}
+
+.module-list li {
+    font-size: 0.95rem !important;
+    color: #334155 !important;
+    padding: 0.5rem 0.6rem 0.5rem 1.6rem;
+    margin-bottom: 0.4rem !important;
+    position: relative;
+    border-radius: 0.4rem;
+    line-height: 1.65;
+}
+
+.module-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0.4rem;
+    color: #3b82f6;
+    font-size: 0.85rem;
+    top: 0.52rem;
+}
+
+.module-list li:hover {
+    background: rgba(59,130,246,0.04);
+}
+

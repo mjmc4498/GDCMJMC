@@ -209,6 +209,39 @@
 </ul></div>
 <div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Netflix usa un Data Warehouse en Apache Druid para analizar el comportamiento de 220 millones de suscriptores en tiempo real, generando 8 millones de eventos por segundo. Las recomendaciones de contenido que retienen al 80% de los usuarios se basan en modelos analíticos construidos sobre este DW. En Perú, la SBS usa un DW para detectar patrones de lavado de activos en tiempo real en las transacciones bancarias del sistema financiero.</p></div>
 <div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Snowflake:</strong> Data Warehouse cloud-native con separación de cómputo y almacenamiento; referente del mercado actual.</li><li><strong>Power BI (Microsoft):</strong> Herramienta líder de BI para visualización, dashboards y análisis self-service integrada con Azure.</li><li><strong>Tableau:</strong> Plataforma de visualización analítica de alto impacto visual con fuerte comunidad de usuarios.</li><li><strong>dbt (data build tool):</strong> Transformación, documentación y pruebas de modelos analíticos en el patrón ELT moderno.</li><li><strong>Looker (Google):</strong> BI semántico con LookML para definición centralizada y gobernada de métricas de negocio.</li></ul></div>
+<div class="module-section"><h2>📚 Frameworks y Estándares de Referencia</h2>
+<div class="frameworks-grid">
+    <div class="framework-item">
+        <span class="framework-icon">⭐</span>
+        <div>
+            <span class="framework-name">Kimball Dimensional Modeling</span> · <span class="framework-org">Ralph Kimball / Kimball Group</span>
+            <p class="framework-desc">Metodología bottom-up de diseño de Data Warehouses basada en Star Schemas, Bus Matrix y el ciclo de vida dimensional (4 pasos).</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🏛️</span>
+        <div>
+            <span class="framework-name">Inmon CIF (Corporate Information Factory)</span> · <span class="framework-org">Bill Inmon</span>
+            <p class="framework-desc">Arquitectura top-down con Data Warehouse corporativo normalizado como fuente única de verdad y Data Marts departamentales derivados.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🏗️</span>
+        <div>
+            <span class="framework-name">Data Vault 2.0</span> · <span class="framework-org">Dan Linstedt</span>
+            <p class="framework-desc">Metodología de modelado para DW con Hubs, Links y Satellites que prioriza auditoría, historicidad y adaptabilidad al cambio.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">📊</span>
+        <div>
+            <span class="framework-name">TDWI Maturity Model</span> · <span class="framework-org">TDWI (Transforming Data with Intelligence)</span>
+            <p class="framework-desc">Modelo de madurez de 5 niveles para evaluar y mejorar las capacidades de Business Intelligence y Analytics de una organización.</p>
+        </div>
+    </div>
+</div>
+</div>
+
 <div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Una universidad peruana con 50,000 estudiantes necesita un Data Warehouse para reportar indicadores de rendimiento académico al MINEDU y a su propia dirección. Diseña: (a) Bus Matrix con 3 procesos de negocio (Matrícula, Notas, Deserción) y sus dimensiones; (b) Star Schema detallado para el proceso "Notas" con tabla de hechos y 4 dimensiones; (c) SCD Tipo 2 para la dimensión "Programa Académico" (los estudiantes cambian de carrera); (d) 5 KPIs con su definición, fórmula y fuente; (e) Análisis de privacidad para datos de estudiantes en el DW según Ley 29733.</p></div>
 <div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">📌</span> <span><strong style="color:#0ea5e9;">Comenzar con el piloto</strong> del data mart más valioso para el negocio y demostrar ROI antes de escalar.</span></li>
@@ -297,6 +330,7 @@
         </article></main>
     <script src="../js/quiz-data.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/module-collapse.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body></html>

@@ -211,6 +211,39 @@
 </ul></div>
 <div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Rímac Seguros en Perú integró datos de 5 sistemas core (pólizas, siniestros, clientes, pagos, agentes) usando MuleSoft, implementando una capa de API Management que redujo el tiempo de desarrollo de nuevas integraciones de 3 meses a 2 semanas. El catálogo de APIs incluye controles de throttling y auditoría de acceso para cumplir con la Ley 29733.</p></div>
 <div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Apache Kafka:</strong> Plataforma de streaming distribuido para integración en tiempo real de alta disponibilidad.</li><li><strong>Apache Airflow:</strong> Orquestador de pipelines de datos batch y micro-batch con interfaz visual de monitoreo.</li><li><strong>dbt (data build tool):</strong> Herramienta de transformación y documentación de modelos en el patrón ELT moderno.</li><li><strong>MuleSoft / Azure Integration Services:</strong> Plataformas de integración empresarial con gestión de APIs y conectores listos para usar.</li><li><strong>AWS Glue / Azure Data Factory:</strong> Servicios de integración de datos en la nube con catálogo de datos integrado.</li></ul></div>
+<div class="module-section"><h2>📚 Frameworks y Estándares de Referencia</h2>
+<div class="frameworks-grid">
+    <div class="framework-item">
+        <span class="framework-icon">📘</span>
+        <div>
+            <span class="framework-name">Enterprise Integration Patterns</span> · <span class="framework-org">Hohpe & Woolf</span>
+            <p class="framework-desc">Catálogo de 65 patrones de integración empresarial: Message Router, Content-Based Router, Aggregator, Splitter, entre otros.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🔄</span>
+        <div>
+            <span class="framework-name">ETL/ELT Design Patterns</span> · <span class="framework-org">Kimball Group / dbt Labs</span>
+            <p class="framework-desc">Patrones de diseño para pipelines de extracción, transformación y carga, incluyendo SCD (Slowly Changing Dimensions) e idempotencia.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🏗️</span>
+        <div>
+            <span class="framework-name">Medallion Architecture</span> · <span class="framework-org">Databricks</span>
+            <p class="framework-desc">Patrón de organización de datos en capas Bronze (raw), Silver (cleaned) y Gold (business-ready) para Data Lakehouses.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">📡</span>
+        <div>
+            <span class="framework-name">Apache Integration Patterns</span> · <span class="framework-org">Apache Software Foundation</span>
+            <p class="framework-desc">Implementación open-source de patrones de integración en Apache Camel, Kafka Connect y NiFi para pipelines de datos.</p>
+        </div>
+    </div>
+</div>
+</div>
+
 <div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Diseña el pipeline de integración para una cadena de supermercados peruana que requiere consolidar ventas de 80 tiendas (Oracle POS) en su Data Warehouse (Snowflake) para reportes de categorías al día siguiente a las 6 AM. Especifica: (a) Diagrama de la arquitectura del pipeline (fuentes → staging → transformación → destino); (b) Estrategia de integración: batch, CDC o streaming (justifica); (c) Reglas de transformación para estandarizar códigos de producto y sucursal; (d) Plan de gestión de errores y alertas; (e) Controles para datos de clientes con tarjeta de fidelización (Ley 29733).</p></div>
 <div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">📌</span> <span><strong style="color:#0ea5e9;">Diseñar los pipelines con</strong> el patrón Medallion (Bronze/Silver/Gold) para garantizar calidad progresiva.</span></li>
@@ -299,6 +332,7 @@
         </article></main>
     <script src="../js/quiz-data.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/module-collapse.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body></html>

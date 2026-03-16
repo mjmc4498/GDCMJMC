@@ -173,13 +173,56 @@
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🎯</span> <span><strong style="color:#4f46e5;">Desarrollar reglas de calidad</strong> (DQ Rules) alineadas con los requisitos del negocio.</span></li>
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🎯</span> <span><strong style="color:#4f46e5;">Cumplir el Principio de</strong> Calidad de la Ley 29733 para datos personales (art. 8).</span></li>
 </ul></div>
-<div class="module-section"><h2>🔑 Conceptos Clave</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
-<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Completitud:</strong> Medida en que todos los valores requeridos están presentes: % de campos obligatorios no nulos.</span></li>
-<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Exactitud:</strong> Grado en que los valores reales corresponden a la realidad: el DNI coincide con el registro de RENIEC.</span></li>
-<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Consistencia:</strong> Grado en que los datos son coherentes dentro y entre sistemas: la edad calculada coincide con la fecha de nacimiento.</span></li>
-<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Oportunidad:</strong> Grado en que los datos están disponibles cuando se necesitan: el saldo de cuenta actualizado en tiempo real.</span></li>
+<div class="module-section"><h2>🔑 Conceptos Clave — Las 6 Dimensiones DAMA-DMBOK</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
+<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Completitud (Completeness):</strong> Medida en que todos los valores requeridos están presentes. Ejemplo: % de campos obligatorios no nulos. Ref. ISO 25012: dimensión inherente.</span></li>
+<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Exactitud (Accuracy):</strong> Grado en que los valores corresponden a la realidad. Ejemplo: el DNI coincide con el registro de RENIEC. Ref. ISO 25012: dimensión inherente.</span></li>
+<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Consistencia (Consistency):</strong> Grado en que los datos son coherentes dentro y entre sistemas. Ejemplo: la edad calculada coincide con la fecha de nacimiento. Ref. ISO 25012: dimensión inherente.</span></li>
+<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Oportunidad (Timeliness):</strong> Grado en que los datos están disponibles cuando se necesitan. Ejemplo: el saldo de cuenta actualizado en tiempo real. Ref. ISO 25012: "Actualidad" (currentness).</span></li>
+<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Unicidad (Uniqueness):</strong> Garantía de que cada registro representa una entidad única sin duplicados. Ejemplo: un cliente no aparece dos veces con DNIs distintos. Ref. ISO 8000-61.</span></li>
+<li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">Validez (Validity):</strong> Grado en que los datos cumplen con las reglas de formato, dominio y tipo definidas. Ejemplo: un campo de email contiene un formato válido (usuario@dominio.com). Ref. ISO 25012: "Conformidad".</span></li>
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">🔑</span> <span><strong style="color:#d97706;">KDQI (Key Data Quality Indicators):</strong> Métricas clave de calidad de datos específicas para un dominio o proceso de negocio, análogas a los KPIs financieros.</span></li>
 </ul></div>
+
+<div class="module-section accent-blue"><h2>📐 Dimensiones de Calidad — Estándares Internacionales</h2>
+<p>Las dimensiones de calidad de datos se definen en múltiples estándares internacionales. A continuación se comparan los principales marcos de referencia:</p>
+
+<h3 style="font-family:'Space Grotesk',sans-serif; font-size:1rem; color:#1e40af; margin-top:1.25rem; margin-bottom:0.5rem;">ISO/IEC 25012 — 15 Dimensiones en 2 Categorías</h3>
+<p style="font-size:0.92rem !important;"><strong>Inherentes al dato:</strong> Exactitud, Completitud, Consistencia, Credibilidad, Actualidad (Currentness).</p>
+<p style="font-size:0.92rem !important;"><strong>Dependientes del sistema:</strong> Disponibilidad, Portabilidad, Recuperabilidad.</p>
+<p style="font-size:0.92rem !important;"><strong>Inherentes y dependientes:</strong> Accesibilidad, Conformidad, Confidencialidad, Eficiencia, Precisión, Trazabilidad, Comprensibilidad.</p>
+
+<h3 style="font-family:'Space Grotesk',sans-serif; font-size:1rem; color:#1e40af; margin-top:1.25rem; margin-bottom:0.5rem;">DQAF — Data Quality Assessment Framework (FMI)</h3>
+<p style="font-size:0.92rem !important;">Marco del Fondo Monetario Internacional para evaluar calidad de datos estadísticos en 6 dimensiones: Pre-requisitos institucionales, Integridad, Solidez metodológica, Exactitud y confiabilidad, Utilidad y Accesibilidad.</p>
+
+<h3 style="font-family:'Space Grotesk',sans-serif; font-size:1rem; color:#1e40af; margin-top:1.25rem; margin-bottom:0.5rem;">TDQM — Total Data Quality Management (MIT)</h3>
+<p style="font-size:0.92rem !important;">Metodología del MIT Information Quality Program que establece un ciclo continuo: <strong>Definir</strong> requisitos de calidad → <strong>Medir</strong> el estado actual → <strong>Analizar</strong> las causas raíz → <strong>Mejorar</strong> mediante acciones correctivas y preventivas.</p>
+
+<h3 style="font-family:'Space Grotesk',sans-serif; font-size:1rem; color:#1e40af; margin-top:1.25rem; margin-bottom:0.75rem;">Tabla Comparativa de Dimensiones</h3>
+<div style="overflow-x:auto;">
+<table class="dq-dimensions-table">
+<thead>
+<tr><th>Dimensión</th><th>DAMA-DMBOK</th><th>ISO 25012</th><th>ISO 8000</th><th>DQAF (FMI)</th></tr>
+</thead>
+<tbody>
+<tr class="dq-category-row"><td colspan="5">Dimensiones fundamentales</td></tr>
+<tr><td>Exactitud / Accuracy</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td></tr>
+<tr><td>Completitud / Completeness</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td></tr>
+<tr><td>Consistencia / Consistency</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td></tr>
+<tr><td>Oportunidad / Timeliness</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003; (Actualidad)</td><td class="dq-empty">—</td><td class="dq-check">&#10003; (Utilidad)</td></tr>
+<tr><td>Unicidad / Uniqueness</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td></tr>
+<tr><td>Validez / Validity</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003; (Conformidad)</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td></tr>
+<tr class="dq-category-row"><td colspan="5">Dimensiones extendidas</td></tr>
+<tr><td>Credibilidad</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td><td class="dq-check">&#10003; (Integridad)</td></tr>
+<tr><td>Accesibilidad</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td></tr>
+<tr><td>Trazabilidad</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td></tr>
+<tr><td>Confidencialidad</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td><td class="dq-empty">—</td></tr>
+<tr><td>Portabilidad</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td><td class="dq-empty">—</td></tr>
+<tr><td>Comprensibilidad</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td><td class="dq-empty">—</td><td class="dq-empty">—</td></tr>
+<tr><td>Solidez metodológica</td><td class="dq-empty">—</td><td class="dq-empty">—</td><td class="dq-empty">—</td><td class="dq-check">&#10003;</td></tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="module-section"><h2>⚙️ Explicación Técnica Detallada</h2>
 <div class="tech-explanation">
                 <p>El ciclo de vida operativo de la <strong>Gestión de Calidad de Datos</strong> requiere ejecución iterativa y permanente:</p>
@@ -209,6 +252,53 @@
 </ul></div>
 <div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>UPS ejecuta reglas de calidad sobre 16 millones de registros de envíos diarios; un error de dirección cuesta entre 2 y 17 dólares en reentregas. Su sistema de calidad detecta y corrige automáticamente más de 400,000 direcciones defectuosas diarias. En Perú, el RENIEC mantiene el padrón electoral más actualizado de América Latina gracias a su programa de depuración continua, sirviendo como fuente de referencia de calidad para múltiples entidades del Estado.</p></div>
 <div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Great Expectations:</strong> Framework open-source Python para definir, ejecutar y documentar pruebas de calidad de datos.</li><li><strong>dbt Tests:</strong> Pruebas de calidad de datos integradas en el proceso de transformación dbt.</li><li><strong>Talend Data Quality:</strong> Suite de perfilado, limpieza y monitoreo de calidad de datos para entornos enterprise.</li><li><strong>Informatica Data Quality:</strong> Profiling, limpieza y enriquecimiento de datos con inteligencia artificial incorporada.</li><li><strong>Monte Carlo / Anomalo:</strong> Plataformas de Data Observability para detección proactiva de anomalías en pipelines de datos.</li></ul></div>
+<div class="module-section"><h2>📚 Frameworks y Estándares de Referencia</h2>
+<div class="frameworks-grid">
+    <div class="framework-item">
+        <span class="framework-icon">📘</span>
+        <div>
+            <span class="framework-name">ISO 8000</span> · <span class="framework-org">ISO</span>
+            <p class="framework-desc">Estándar internacional para calidad de datos maestros: define requisitos para el intercambio de datos de calidad entre organizaciones.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">📐</span>
+        <div>
+            <span class="framework-name">ISO/IEC 25012</span> · <span class="framework-org">ISO/IEC</span>
+            <p class="framework-desc">Modelo de calidad de datos con 15 dimensiones clasificadas en inherentes y dependientes del sistema (parte de la familia SQuaRE 25000).</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🏛️</span>
+        <div>
+            <span class="framework-name">DQAF</span> · <span class="framework-org">Fondo Monetario Internacional (FMI)</span>
+            <p class="framework-desc">Data Quality Assessment Framework: marco para evaluar calidad de datos estadísticos oficiales en 6 dimensiones institucionales.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🎓</span>
+        <div>
+            <span class="framework-name">TDQM</span> · <span class="framework-org">MIT Information Quality Program</span>
+            <p class="framework-desc">Total Data Quality Management: metodología académica con ciclo Definir-Medir-Analizar-Mejorar para la gestión continua de calidad.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">📊</span>
+        <div>
+            <span class="framework-name">Six Sigma para Datos (DMAIC)</span> · <span class="framework-org">ASQ / Motorola</span>
+            <p class="framework-desc">Aplicación de la metodología Definir-Medir-Analizar-Mejorar-Controlar a la calidad de datos, con enfoque estadístico y reducción de defectos.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">📕</span>
+        <div>
+            <span class="framework-name">DAMA-DMBOK Cap. 13</span> · <span class="framework-org">DAMA International</span>
+            <p class="framework-desc">Capítulo dedicado a Data Quality Management: define las 6 dimensiones principales, el ciclo de vida y los roles de calidad de datos.</p>
+        </div>
+    </div>
+</div>
+</div>
+
 <div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Un banco peruano detectó que el 22% de sus clientes tiene datos de contacto desactualizados (email, teléfono, dirección), afectando las notificaciones de la SBS y el cumplimiento de la Ley 29733. Diseña el programa de calidad: (a) Perfilado de las 6 dimensiones de calidad para la entidad "Cliente"; (b) Reglas de calidad con umbrales aceptables para 5 atributos críticos; (c) Proceso de remediation: limpieza de datos históricos y corrección del proceso de captura; (d) Dashboard de KDQI de calidad de datos de clientes con 5 métricas; (e) Procedimiento de rectificación de datos en respuesta a solicitudes ARCO según Ley 29733.</p></div>
 <div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">📌</span> <span><strong style="color:#0ea5e9;">Establecer una línea base</strong> de calidad (profiling inicial) antes de comenzar cualquier mejora.</span></li>
@@ -297,6 +387,7 @@
         </article></main>
     <script src="../js/quiz-data.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/module-collapse.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body></html>

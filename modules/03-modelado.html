@@ -212,6 +212,39 @@
 </ul></div>
 <div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Netflix usa modelos de datos distribuidos (Cassandra + modelos desnormalizados) para servir recomendaciones a 220 millones de usuarios. En el sector público peruano, la SUNAT migró su modelo de datos de contribuyentes a un esquema normalizado que permitió la implementación de la Factura Electrónica, reduciendo el fraude tributario en 18%.</p></div>
 <div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>erwin Data Modeler:</strong> Modelado conceptual, lógico y físico con ingeniería directa e inversa.</li><li><strong>PowerDesigner (SAP):</strong> Suite completa de modelado con soporte a Data Vault y MDM.</li><li><strong>dbdiagram.io:</strong> Herramienta web gratuita para modelado rápido con notación DSL.</li><li><strong>MySQL Workbench / pgModeler:</strong> Modelado físico específico para MySQL y PostgreSQL respectivamente.</li><li><strong>dbt + YAML:</strong> Documentación de modelos de datos en pipelines de transformación modernos.</li></ul></div>
+<div class="module-section"><h2>📚 Frameworks y Estándares de Referencia</h2>
+<div class="frameworks-grid">
+    <div class="framework-item">
+        <span class="framework-icon">📐</span>
+        <div>
+            <span class="framework-name">Modelo ER (Chen)</span> · <span class="framework-org">Peter Chen (1976)</span>
+            <p class="framework-desc">Notación original de Entidad-Relación: base teórica del modelado conceptual de datos utilizada universalmente en la academia y la industria.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🔷</span>
+        <div>
+            <span class="framework-name">IDEF1X</span> · <span class="framework-org">NIST / FIPS 184</span>
+            <p class="framework-desc">Estándar federal de EE.UU. para modelado de datos semánticos con notación formal para entidades, relaciones y dominios.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🌐</span>
+        <div>
+            <span class="framework-name">UML Data Modeling</span> · <span class="framework-org">OMG (Object Management Group)</span>
+            <p class="framework-desc">Uso de diagramas de clases UML para modelado de datos orientado a objetos, con estereotipos para tablas, columnas y relaciones.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🏗️</span>
+        <div>
+            <span class="framework-name">Data Vault 2.0</span> · <span class="framework-org">Dan Linstedt</span>
+            <p class="framework-desc">Metodología de modelado para Data Warehouses basada en Hubs, Links y Satellites que garantiza historicidad, auditoría y escalabilidad.</p>
+        </div>
+    </div>
+</div>
+</div>
+
 <div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Dado el enunciado de una cadena de farmacias peruana con farmacias, productos, clientes con recetas médicas y ventas, elabora: (a) Modelo Conceptual con mínimo 6 entidades; (b) Modelo Lógico normalizado en 3FN con todos los atributos y claves; (c) Identificación de atributos de datos personales sensibles (datos de salud) según Ley 29733; (d) Justificación de las decisiones de diseño en las relaciones N:M.</p></div>
 <div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">📌</span> <span><strong style="color:#0ea5e9;">Establecer un proceso formal</strong> de revisión de modelos con el Architecture Review Board.</span></li>
@@ -300,6 +333,7 @@
         </article></main>
     <script src="../js/quiz-data.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/module-collapse.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body></html>

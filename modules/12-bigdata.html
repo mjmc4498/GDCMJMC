@@ -208,6 +208,46 @@
 </ul></div>
 <div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Spotify analiza 100 petabytes de datos de comportamiento de usuarios usando Apache Kafka y Spark para generar recomendaciones personalizadas que retienen al 87% de sus usuarios premium. Su sistema de Discover Weekly generó más de 2,000 millones de playlists personalizadas con una tasa de satisfacción del 91%. En Perú, el INDECOPI usa análisis de texto (NLP) sobre más de 500,000 reclamos anuales para identificar patrones de infracción y priorizar investigaciones sectoriales.</p></div>
 <div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Apache Spark:</strong> Motor de procesamiento distribuido para batch y streaming a escala de petabytes.</li><li><strong>Apache Kafka:</strong> Plataforma de streaming de eventos para procesamiento de datos en tiempo real.</li><li><strong>Databricks:</strong> Plataforma cloud unificada de Data Lakehouse con Spark gestionado, MLflow y Delta Lake.</li><li><strong>dbt + Delta Lake:</strong> Combinación para transformaciones gobernadas sobre Data Lakehouses con soporte ACID.</li><li><strong>MLflow:</strong> Plataforma open-source para gestión del ciclo de vida de modelos ML: tracking, registro y despliegue.</li></ul></div>
+<div class="module-section"><h2>📚 Frameworks y Estándares de Referencia</h2>
+<div class="frameworks-grid">
+    <div class="framework-item">
+        <span class="framework-icon">🏛️</span>
+        <div>
+            <span class="framework-name">NIST Big Data Reference Architecture</span> · <span class="framework-org">NIST (EE.UU.)</span>
+            <p class="framework-desc">Arquitectura de referencia con 5 roles (proveedor, consumidor, aplicación, framework, seguridad) para ecosistemas de Big Data.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🔺</span>
+        <div>
+            <span class="framework-name">Lambda Architecture</span> · <span class="framework-org">Nathan Marz</span>
+            <p class="framework-desc">Patrón arquitectónico con 3 capas (batch, speed, serving) para procesamiento de datos masivos combinando latencia baja y alta exactitud.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🔄</span>
+        <div>
+            <span class="framework-name">Kappa Architecture</span> · <span class="framework-org">Jay Kreps (LinkedIn/Confluent)</span>
+            <p class="framework-desc">Simplificación de Lambda que usa solo streaming como capa única de procesamiento, eliminando la complejidad de mantener dos pipelines.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">📊</span>
+        <div>
+            <span class="framework-name">CRISP-DM</span> · <span class="framework-org">IBM / NCR / SPSS</span>
+            <p class="framework-desc">Cross-Industry Standard Process for Data Mining: metodología de 6 fases (comprensión del negocio, datos, preparación, modelado, evaluación, despliegue).</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🤖</span>
+        <div>
+            <span class="framework-name">AI/ML Governance Framework</span> · <span class="framework-org">OECD / EU AI Act</span>
+            <p class="framework-desc">Principios de gobernanza de IA: transparencia, explicabilidad, equidad, privacidad y responsabilidad en modelos de Machine Learning.</p>
+        </div>
+    </div>
+</div>
+</div>
+
 <div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Una empresa de salud privada peruana con 15 clínicas quiere implementar un modelo de ML para predecir la probabilidad de re-hospitalización de pacientes crónicos en los próximos 30 días. Diseña el gobierno de este proyecto de IA: (a) Arquitectura de datos: fuentes, procesamiento y almacenamiento de los datos clínicos; (b) Análisis de impacto en privacidad (PIA) según Ley 29733 para datos de salud (art. 13); (c) Evaluación de base legal para el tratamiento de datos de salud en el modelo; (d) Marco de gobernanza del modelo: documentación, explicabilidad y monitoreo de sesgo; (e) Procedimiento para el derecho del paciente a no ser objeto de decisiones automatizadas sin intervención humana (Ley 29733 art. 12).</p></div>
 <div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">📌</span> <span><strong style="color:#0ea5e9;">Comenzar con casos de</strong> uso de Big Data que tengan ROI demostrable y bajo riesgo regulatorio.</span></li>
@@ -296,6 +336,7 @@
         </article></main>
     <script src="../js/quiz-data.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/module-collapse.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body></html>

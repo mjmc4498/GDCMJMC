@@ -209,6 +209,39 @@
 </ul></div>
 <div class="module-section accent-gold"><h2>💼 Casos de Uso Reales</h2><p>Procter & Gamble implementó MDM para 100,000 productos en 180 países, reduciendo los errores de inventario en un 82% y ahorrando 300 millones de dólares anuales en ineficiencias de la cadena de suministro. En el sector salud peruano, EsSalud trabaja en la consolidación del padrón de asegurados (datos maestros de personas) para eliminar duplicados que generaban pagos de pensiones a fallecidos.</p></div>
 <div class="module-section"><h2>🛠️ Herramientas y Tecnologías</h2><ul class="module-list"><li><strong>Informatica MDM:</strong> Plataforma líder de Master Data Management con capacidades de deduplicación y gobierno.</li><li><strong>SAP Master Data Governance (MDG):</strong> MDM integrado en el ecosistema SAP para clientes, materiales y proveedores.</li><li><strong>Reltio Cloud:</strong> MDM moderno basado en grafos de conocimiento para resolución de entidades en tiempo real.</li><li><strong>TIBCO EBX:</strong> Gestión de datos maestros y de referencia con flujos de aprobación y versionado.</li><li><strong>Talend MDM:</strong> Solución open-core de MDM con integración a pipelines de datos.</li></ul></div>
+<div class="module-section"><h2>📚 Frameworks y Estándares de Referencia</h2>
+<div class="frameworks-grid">
+    <div class="framework-item">
+        <span class="framework-icon">📘</span>
+        <div>
+            <span class="framework-name">MDM Framework</span> · <span class="framework-org">Dreibelbis, Hechler, et al. (IBM)</span>
+            <p class="framework-desc">Marco integral de Master Data Management que define patrones de implementación (Registry, Consolidation, Coexistence, Centralized) y mejores prácticas.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🎓</span>
+        <div>
+            <span class="framework-name">CDMP (Certified Data Management Professional)</span> · <span class="framework-org">DAMA International</span>
+            <p class="framework-desc">Certificación profesional basada en DAMA-DMBOK que incluye competencias específicas en gestión de datos maestros y de referencia.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">📊</span>
+        <div>
+            <span class="framework-name">Gartner MDM Reference Architecture</span> · <span class="framework-org">Gartner</span>
+            <p class="framework-desc">Arquitectura de referencia que define los componentes de una solución MDM: matching, survivorship, stewardship, distribución y gobierno.</p>
+        </div>
+    </div>
+    <div class="framework-item">
+        <span class="framework-icon">🔷</span>
+        <div>
+            <span class="framework-name">ISO 8000 (Master Data)</span> · <span class="framework-org">ISO</span>
+            <p class="framework-desc">Estándar de calidad de datos maestros que define requisitos para el intercambio de datos de calidad entre organizaciones.</p>
+        </div>
+    </div>
+</div>
+</div>
+
 <div class="module-section accent-blue"><h2>✏️ Ejercicio Práctico</h2><p>Actividad: Una empresa de telecomunicaciones peruana tiene el registro de "Cliente" duplicado en 5 sistemas: CRM (Salesforce), Facturación (SAP), Atención al Cliente (Zendesk), Red (OSS) y Analytics (Redshift). Diseña la estrategia MDM: (a) Elección y justificación del patrón MDM (Registry/Consolidation/Coexistence/Centralized); (b) Proceso de deduplicación con 4 atributos de coincidencia (DNI, teléfono, email, nombre); (c) 5 Survivorship Rules para los atributos más críticos; (d) Flujo de distribución del Golden Record a los 5 sistemas; (e) Análisis de cumplimiento con Ley 29733 para la consolidación de datos personales.</p></div>
 <div class="module-section"><h2>💡 Recomendaciones de Implementación</h2><ul class="module-list" style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
 <li style="margin-bottom: 0.75rem; line-height: 1.6; display:flex; align-items:flex-start; gap:0.5rem;"><span style="flex-shrink:0;">📌</span> <span><strong style="color:#0ea5e9;">Obtener patrocinio ejecutivo:</strong> un MDM sin respaldo de la alta dirección fracasa por conflictos entre áreas.</span></li>
@@ -297,6 +330,7 @@
         </article></main>
     <script src="../js/quiz-data.js"></script>
 <script src="../js/quiz.js"></script>
+<script src="../js/module-collapse.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 </body></html>

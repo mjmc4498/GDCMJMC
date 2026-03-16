@@ -308,3 +308,196 @@
     background: rgba(59,130,246,0.04);
 }
 
+/* ============ COLLAPSIBLE SECTIONS ============ */
+.module-section .section-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+}
+
+.module-section .section-toggle h2 {
+    flex: 1;
+    pointer-events: none;
+}
+
+.module-section .section-chevron {
+    font-size: 1rem;
+    color: #94a3b8;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 0.75rem;
+}
+
+.module-section.collapsed .section-chevron {
+    transform: rotate(-90deg);
+}
+
+.module-section .section-collapsible {
+    max-height: 4000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.35s ease-in-out;
+    opacity: 1;
+}
+
+.module-section.collapsed .section-collapsible {
+    max-height: 0;
+    opacity: 0;
+}
+
+.module-section .section-toggle:hover .section-chevron {
+    color: #3b82f6;
+}
+
+.module-section.no-collapse .section-toggle {
+    cursor: default;
+}
+
+.module-section.no-collapse .section-chevron {
+    display: none;
+}
+
+/* ============ COLLAPSE CONTROLS BAR ============ */
+.collapse-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.collapse-controls button {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.collapse-controls button:hover {
+    background: #e0f2fe;
+    border-color: #7dd3fc;
+    color: #0369a1;
+}
+
+/* ============ FRAMEWORKS REFERENCE TABLE ============ */
+.frameworks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+}
+
+.framework-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 0.9rem;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.framework-item:hover {
+    border-color: #93c5fd;
+    background: #fff;
+}
+
+.framework-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.framework-name {
+    font-weight: 700;
+    color: #1e40af;
+    font-size: 0.92rem;
+}
+
+.framework-org {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.framework-desc {
+    font-size: 0.88rem !important;
+    color: #475569 !important;
+    line-height: 1.5 !important;
+    margin: 0.15rem 0 0 !important;
+}
+
+/* ============ QA DIMENSIONS TABLE (M11) ============ */
+.dq-dimensions-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+
+.dq-dimensions-table thead th {
+    background: #1e3a5f;
+    color: #fff;
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+}
+
+.dq-dimensions-table tbody td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.dq-dimensions-table tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+.dq-dimensions-table tbody tr:hover {
+    background: #eff6ff;
+}
+
+.dq-dimensions-table .dq-check {
+    color: #16a34a;
+    font-weight: 700;
+    text-align: center;
+}
+
+.dq-dimensions-table .dq-empty {
+    color: #cbd5e1;
+    text-align: center;
+}
+
+.dq-category-row td {
+    background: #e0f2fe !important;
+    font-weight: 700;
+    color: #0c4a6e !important;
+    font-size: 0.82rem;
+    letter-spacing: 0.3px;
+}
+

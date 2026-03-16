@@ -771,10 +771,11 @@
             <div class="form-left">
                 <span class="badge">Certificación Profesional</span>
                 <h2>Emite tu Certificado Oficial</h2>
-                <p>Aprueba los exámenes de todos los módulos o usa la clave de administrador para generar tu
-                    certificado.</p>
+                <p>Aprueba los exámenes de los 12 módulos para desbloquear tu certificado automáticamente, sin necesidad de código.</p>
                 <ul class="form-checklist">
                     <li>12 exámenes oficiales aprobados (≥ 80%)</li>
+                    <li>Se desbloquea al completar todos los módulos</li>
+                    <li>Sin código de administrador al aprobar todo</li>
                     <li>Firmado por experto certificado · UNAM México</li>
                     <li>Sello oficial y QR de verificación</li>
                     <li>PDF pixel-perfect listo para imprimir</li>
@@ -800,6 +801,10 @@
                         style="letter-spacing:4px;font-size:1rem;padding:0.85rem 1.2rem;">
                     <p id="admin-key-error" style="display:none;color:#ef4444;font-size:0.8rem;margin-top:0.3rem;">
                         ❌ Clave incorrecta. Verifica e intenta nuevamente.
+                    </p>
+                </div>
+                <div id="unlock-note" style="display:none; background:rgba(52,211,153,0.08); border:1px solid rgba(52,211,153,0.25); border-radius:0.75rem; padding:0.85rem 1rem; margin-bottom:1.1rem;">
+                    <p id="unlock-note-text" style="margin:0; font-size:0.82rem; line-height:1.6; color:#94a3b8;">
                     </p>
                 </div>
                 <button id="btn-generate" class="btn btn-primary" style="width:100%;font-size:1rem;padding:0.95rem;">
@@ -959,12 +964,21 @@
             document.getElementById('module-status-list').innerHTML = html;
             const hint = document.getElementById('form-hint-text');
             document.getElementById('admin-key-section').style.display = allDone ? 'none' : 'block';
+            var unlockNote = document.getElementById('unlock-note');
+            var unlockText = document.getElementById('unlock-note-text');
+            unlockNote.style.display = 'block';
             if (allDone) {
                 hint.textContent = '🎉 ¡Todos los exámenes aprobados! Ingresa tu nombre para generar el certificado.';
                 hint.style.color = '#34d399';
+                unlockNote.style.background = 'rgba(52,211,153,0.08)';
+                unlockNote.style.borderColor = 'rgba(52,211,153,0.25)';
+                unlockText.innerHTML = '🔓 <strong style="color:#34d399;">Certificado desbloqueado.</strong> Has completado los 12 módulos. No necesitas ningún código — solo ingresa tu nombre y genera tu certificado.';
             } else {
-                hint.textContent = `${pending.length} módulo(s) pendiente(s). Usa la clave de administrador para continuar.`;
+                hint.textContent = `${pending.length} módulo(s) pendiente(s). Usa la clave de administrador o completa todos los módulos.`;
                 hint.style.color = '#f59e0b';
+                unlockNote.style.background = 'rgba(59,130,246,0.08)';
+                unlockNote.style.borderColor = 'rgba(59,130,246,0.25)';
+                unlockText.innerHTML = '🔒 <strong style="color:#60a5fa;">¿Sabías que?</strong> Al completar los 12 módulos (≥ 80% en cada examen), el certificado se desbloquea automáticamente y <strong style="color:#e2e8f0;">no necesitarás el código de administrador</strong>. Mientras tanto, puedes usar la clave para generar tu certificado.';
             }
             return { allDone };
         }
